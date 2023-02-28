@@ -3,7 +3,7 @@ import Book from "../Book";
 
 const Education = () => {
   return (
-    <section id="education" className="bg-pink flex justify-center items-center p-4 h-80 bg-gray">
+    <section id="education" className="bg-pink flex justify-center items-center p-4 h-[30rem] bg-gray">
       <Book />
       <div>
         {/* Miami Unversity with Course Projects, thesis ? */}

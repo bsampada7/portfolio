@@ -21,9 +21,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className='bg-white'>
-        <Nav/>
+        {/* <Nav/> */}
         <div className='w-full mt-14'></div>
-        <Introduction/>
+        {/* <Introduction/> */}
         <Education/>
         <Experience/>
         <Projects/>
