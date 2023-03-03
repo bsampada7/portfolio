@@ -106,7 +106,7 @@ a {
   }
 } */
 
-@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Sacramento&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -117,16 +117,16 @@ a {
   transform-style: preserve-3d;
   animation: squiggle 1s ease-in-out 0s infinite alternate;
 }
-@keyframes squiggle{
-  0%{
-    transform: rotate3d(0,1,1,0deg);
+@keyframes squiggle {
+  0% {
+    transform: rotate3d(0, 1, 1, 0deg);
   }
-  100%{
-    transform: rotate3d(0,1,1,3deg);
+  100% {
+    transform: rotate3d(0, 1, 1, 3deg);
   }
 }
 
-.book:hover{
+.book:hover {
   animation: none;
 }
 
@@ -160,42 +160,42 @@ a {
   width: 25px;
   height: 100%;
   background-color: #e2e2e2;
-  transform: rotate3d(0,1,0,270deg);
+  transform: rotate3d(0, 1, 0, 270deg);
   transform-origin: right;
 }
 
-.book-cover{
+.book-cover {
   transform-style: preserve-3d;
   transition: transform 2s;
   transform-origin: left;
 }
-.front, .side{
+.front,
+.side {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
 
-.book > .book-cover {
-  /* .book:hover > .book-cover { */
-	transform: rotate3D(0,1,0,180deg);
+/* .book > .book-cover { */
+.book:hover > .book-cover {
+  transform: rotate3D(0, 1, 0, 180deg);
 }
 
-.book .back{
+.book .back {
   transform: rotateY(180deg);
 }
-.console-underscore{
+.console-underscore {
   animation: blinking 400ms ease-in-out 0s infinite alternate;
 }
 @keyframes blinking {
-  0%{
+  0% {
     opacity: 0;
   }
-  100%{
+  100% {
     opacity: 1;
   }
-  
 }
 
-.plane-image{
+.plane-image {
   transform: rotateY(180deg) rotateZ(30deg);
 }
 
@@ -212,3 +212,68 @@ a {
     offset-distance: 100%;
   }
 }
+
+.introduction {
+  background: linear-gradient(
+    45deg,
+    rgba(45, 45, 45, 1) 9%,
+    rgba(0, 0, 0, 1) 100%
+  );
+}
+
+.flicker {
+  overflow: hidden;
+  color: #e000ff;
+  width: 100%;
+  z-index: 5;
+  text-shadow: none;
+  left: 27%;
+  text-align: left;
+  animation: flicker 3s linear infinite;
+}
+
+@keyframes flicker {
+  0%,
+  19.999%,
+  22%,
+  62.999%,
+  64%,
+  64.999%,
+  70%,
+  100% {
+    opacity: 0.99;
+    text-shadow: -1px -1px 0 rgba(255, 255, 255, 0.4),
+      1px -1px 0 rgba(255, 255, 255, 0.4), -1px 1px 0 rgba(255, 255, 255, 0.4),
+      1px 1px 0 rgba(255, 255, 255, 0.4), 0 -2px 8px, 0 0 2px, 0 0 5px #ff7e00,
+      0 0 15px #f44, 0 0 2px #ff7e00, 0 2px 3px #000;
+  }
+  20%,
+  21.999%,
+  63%,
+  63.999%,
+  65%,
+  69.999% {
+    opacity: 0.4;
+    text-shadow: none;
+  }
+}
+
+.bg-circle{
+  width: 40vw;
+  height: 40vw;
+  background: linear-gradient(
+    #e000ff 0%,
+    #8401ff 100%
+  );
+  border-radius: 50%;
+  position: absolute;
+  top:10vw;
+  right:10vw;
+}
+.greeting{
+  position: absolute;
+  top: 30%;
+  left:10vw;
+  transform: translateY(-50%);
+}
+

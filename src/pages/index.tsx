@@ -20,14 +20,14 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className='bg-white'>
+      <main className='bg-white absolute w-full h-full'>
         {/* <Nav/> */}
-        <div className='w-full mt-14'></div>
-        {/* <Introduction/> */}
-        <Education/>
+        {/* <div className='w-full mt-14'></div> */}
+        <Introduction/>
+        {/* <Education/>
         <Experience/>
         <Projects/>
-        <Contact/>
+        <Contact/> */}
       </main>
       
     </>
