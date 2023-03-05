@@ -107,6 +107,7 @@ a {
 } */
 
 @import url("https://fonts.googleapis.com/css2?family=Sacramento&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Anton|Roboto");
 
 @tailwind base;
 @tailwind components;
@@ -257,23 +258,58 @@ a {
     text-shadow: none;
   }
 }
+.cover-background {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  position: fixed !important;
+  /* z-index: -1; */
+  /* transform: none !important; */
+}
 
-.bg-circle{
-  width: 40vw;
-  height: 40vw;
-  background: linear-gradient(
-    #e000ff 0%,
-    #8401ff 100%
-  );
+.bg-circle {
+  /* width: 40vw;
+  height: 40vw; */
+  background: linear-gradient(#e000ff 0%, #8401ff 100%);
   border-radius: 50%;
   position: absolute;
-  top:10vw;
-  right:10vw;
-}
-.greeting{
-  position: absolute;
-  top: 30%;
-  left:10vw;
-  transform: translateY(-50%);
+  top: 10vw;
+  right: 10vw;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30vw;
+  padding-bottom: 30vw;
 }
 
+.bg-circle-new {
+  /* width: 40vw;
+  height: 40vw; */
+  background: linear-gradient(#e000ff 0%, #8401ff 100%);
+  border-radius: 50%;
+  width: 30vw;
+  padding-bottom: 30vw;
+}
+/* .greeting {
+  position: absolute;
+  top: 25%;
+  left: 100px;
+  transform: translateY(-50%);
+} */
+
+.introduction {
+  background: radial-gradient(
+    ellipse at 500% 0,
+    #3e242469 50%,
+    #b566ffab 80%,
+    #8401ff70 100%
+  );
+}
+
+.gradient-text {
+  background: linear-gradient(#e000ff 0%, #8401ff 100%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* radial-gradient(ellipse at 500% 0,var(--color-bg) 50%,var(--color-bg-2) 80%,var(--color-bg-3) 100%) */

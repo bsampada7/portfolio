@@ -10,7 +10,9 @@ module.exports = {
         "gray-dark": "#273444",
         gray: "#8492a6",
         "gray-light": "#d3dce6",
-        miami: "#c41230"
+        miami: "#c41230",
+        secondary: "#e000ff",
+        primary: "#8401ff",
       },
       fontFamily: {
         handwriting: ["sacramento"],
