@@ -1,0 +1,160 @@
+html {
+  scroll-behavior: smooth;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+::-webkit-scrollbar {
+  width: 0; /* Remove scrollbar space */
+  background: transparent; /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+  background: #ff0000;
+}
+
+/* for menu drawer */
+.menu-drawer {
+  transition: right 0.8s cubic-bezier(0.61, 1, 0.88, 1);
+}
+
+.languages {
+  transform: matrix(1, 0, 0, 1, 0, 0);
+  opacity: 1;
+
+  transition: transform 1s cubic-bezier(0.61, 1, 0.88, 1),
+    opacity 1s cubic-bezier(0.61, 1, 0.88, 1);
+}
+
+.slideleft {
+  transform: matrix(1, 0, 0, 1, -300, 0);
+}
+
+.introduction.show,
+.skills.show {
+  transform: matrix(1, 0, 0, 1, 0, 0);
+  opacity: 1;
+}
+
+.introduction {
+  transform: matrix(1, 0, 0, 1, 0, -300);
+  opacity: 0;
+  transition: transform 1s cubic-bezier(0.61, 1, 0.88, 1),
+    opacity 1s cubic-bezier(0.61, 1, 0.88, 1);
+}
+
+.skills {
+  transform: matrix(1, 0, 0, 1, 0, 500);
+  opacity: 0;
+  transition: transform 1s cubic-bezier(0.61, 1, 0.88, 1),
+    opacity 1s cubic-bezier(0.61, 1, 0.88, 1);
+}
+
+.chart {
+  font-size: 0.4em;
+  perspective: 1000px;
+  perspective-origin: 50% 50%;
+  -webkit-backface-visibility: visible;
+  backface-visibility: visible;
+  width: 300px;
+}
+
+.bar {
+  font-size: 0.5em;
+  position: relative;
+  height: 10em;
+  transition: all 0.3s ease-in-out;
+  transform: rotateX(60deg) rotateY(0deg);
+  transform-style: preserve-3d;
+}
+
+.bar .top {
+  transform: rotateX(0deg) rotateY(0) translateX(0em) translateY(4em)
+    translateZ(2em);
+}
+
+.bar .face {
+  font-size: 2em;
+  position: relative;
+  width: 100%;
+  height: 2em;
+  background-color: rgba(254, 254, 254, 0.3);
+}
+.growing-bar,
+.side-a {
+  background-color: rgba(236, 0, 140, 0.6);
+}
+/* .bar-75 .growing-bar {
+  width: 75%;
+} */
+.growing-bar {
+  transition: all 0.3s ease-in-out;
+  background-color: rgba(236, 0, 140, 0.6);
+  /* width: 100%; */
+  height: 2em;
+}
+
+.bar .side-0 {
+  transform: rotateX(90deg) rotateY(0) translateX(0) translateY(1em)
+    translateZ(-1em);
+}
+.side-0 .growing-bar {
+  box-shadow: -0.5em -1.5em 4em rgb(236 0 140 / 80%);
+}
+
+.bar .floor {
+  box-shadow: 0 0.1em 0.6em rgb(0 0 0 / 30%), 0.6em -0.5em 3em rgb(0 0 0 / 30%),
+    1em -1em 8em #fefefe;
+}
+.floor .growing-bar {
+  box-shadow: 0em 0em 2em rgb(236 0 140 / 80%);
+}
+
+.bar .side-b {
+  transform: rotateX(90deg) rotateY(-90deg) translateX(4em) translateY(1em)
+    translateZ(-1em);
+  position: absolute;
+  right: 0;
+}
+
+.bar .face.side-b {
+  width: 2em;
+}
+
+.bar .side-1 {
+  transform: rotateX(90deg) rotateY(0) translateX(0) translateY(1em)
+    translateZ(3em);
+}
+
+.w-1\/12 {
+  width: 8.333333%;
+}
+.w-2\/12 {
+  width: 16.666667%;
+}
+.w-3\/12 {
+  width: 25%;
+}
+.w-4\/12 {
+  width: 33.333333%;
+}
+.w-5\/12 {
+  width: 41.666667%;
+}
+.w-6\/12 {
+  width: 50%;
+}
+.w-7\/12 {
+  width: 58.333333%;
+}
+.w-8\/12 {
+  width: 66.666667%;
+}
+.w-9\/12 {
+  width: 75%;
+}
+.w-10\/12 {
+  width: 83.333333%;
+}
+.w-11\/12 {
+  width: 91.666667%;
+}

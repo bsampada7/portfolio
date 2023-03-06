@@ -304,6 +304,7 @@ a {
     #b566ffab 80%,
     #8401ff70 100%
   );
+  background: transparent;
 }
 
 .gradient-text {
@@ -312,4 +313,126 @@ a {
   -webkit-text-fill-color: transparent;
 }
 
+.float1 {
+  animation: float1 3s infinite ease-in-out;
+}
+
+@keyframes float1 {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(5px, 5px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.float2 {
+  animation: float2 3s infinite ease-in-out;
+}
+
+@keyframes float2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(0, 5px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.float3 {
+  animation: float3 3s infinite alternate ease-in-out;
+}
+
+@keyframes float3 {
+  0% {
+    transform: rotate(2deg);
+  }
+  100% {
+    transform: rotate(-2deg);
+  }
+}
+
+.float4 {
+  animation: float4 3s infinite alternate ease-in-out;
+}
+
+@keyframes float4 {
+  0% {
+    transform: rotate(2deg) translateY(5px);
+  }
+  100% {
+    transform: rotate(-2deg) translateY(-5px);
+  }
+}
+
+.float5 {
+  animation: float5 3s infinite alternate ease-in-out;
+}
+
+@keyframes float5 {
+  0% {
+    transform: translateY(5px);
+  }
+  100% {
+    transform: translateY(-5px);
+  }
+}
+
+.languages {
+  opacity: 1;
+  transition: opacity 1s cubic-bezier(0.61, 1, 0.88, 1);
+}
+
+.languages.flyout {
+  opacity: 0;
+}
+
+.languages > * {
+  transform: matrix(1, 0, 0, 1, 0, 0);
+  transition: transform 1s cubic-bezier(0.61, 1, 0.88, 1);
+}
+
+.languages.flyout div:nth-child(1) {
+  transform: matrix(1, 0, 0, 1, 0, -100);
+}
+
+.languages.flyout div:nth-child(2) {
+  transform: matrix(1, 0, 0, 1, 0, 100);
+}
+
+.languages.flyout div:nth-child(3) {
+  transform: matrix(1, 0, 0, 1, 0, -100);
+}
+
+.languages.flyout div:nth-child(4) {
+  transform: matrix(1, 0, 0, 1, 100, 0);
+}
+
+.languages.flyout div:nth-child(5) {
+  transform: matrix(1, 0, 0, 1, -100, 0);
+}
+
 /* radial-gradient(ellipse at 500% 0,var(--color-bg) 50%,var(--color-bg-2) 80%,var(--color-bg-3) 100%) */
+
+.menu-drawer a{
+  padding-left:1rem;
+  position: relative;
+}
+
+.menu-drawer a.active::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #e000ff;
+  position: absolute;
+  top:50%;
+  transform: translateY(-50%);
+  left: -8px;
+}
