@@ -1,9 +1,12 @@
-import { Html, Scroll, Stage, useGLTF, useScroll } from "@react-three/drei";
+import { MyStoreContext } from "@/store/mystore";
+import { ScrollPage } from "@/store/mystorereducer";
+import { Html, useGLTF, useScroll } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
+import { useContext, useEffect, useRef, useState } from "react";
 import * as THREE from 'three';
-import { useFrame, useThree } from "@react-three/fiber";
-import { useEffect, useRef, useState } from "react";
 import { GLTF } from "three/examples/jsm/loaders/GLTFLoader";
-import { Vector3 } from "three";
+import About from "../About";
+import Introduction from "../Introduction";
 
 type GLTFResult = GLTF & {
   nodes: any
@@ -17,27 +20,62 @@ let scale = 1.1
 
 export function Model(props: any) {
   const { nodes, materials } = useGLTF("http://localhost:3000/model/me6.glb") as GLTFResult;
-  // window.scene = useThree(state => state.scene);
   const scroll = useScroll()
-  // const { width, height } = useThree((state) => state.viewport)
   const group = useRef<any>(null)
   const spotlight = useRef<any>(null)
-  const html = useRef<any>(null)
+  const languages = useRef<any>(null)
+  const introduction = useRef<any>(null)
+  const skills = useRef<any>(null)
+  const { state, dispatch } = useContext(MyStoreContext);
+  const { menuOpen } = state;
 
   const [x, setx] = useState(0);
 
 
-  useFrame((state, delta) => {
+  useFrame((_, delta) => {
     const r1 = scroll.range(0, 1)
+    const r2 = scroll.range(1 / 2, 1)
+    const r3 = scroll.range(7 / 10, 1)
+
     if (group.current) {
-      group.current.rotation.y = THREE.MathUtils.damp(group.current.rotation.y, (-r1 - 1.5), 4, delta)
-      group.current.position.x = THREE.MathUtils.damp(group.current.position.x, (3 * r1), 4, delta)
-      group.current.scale.x = THREE.MathUtils.damp(group.current.scale.x, (-0.1 * r1 + 1.3), 4, delta)
-      group.current.scale.y = THREE.MathUtils.damp(group.current.scale.y, (-0.1 * r1 + 1.3), 4, delta)
-      group.current.scale.z = THREE.MathUtils.damp(group.current.scale.z, (-0.1 * r1 + 1.3), 4, delta)
+      if (menuOpen) {
+        group.current.rotation.y = THREE.MathUtils.damp(group.current.rotation.y, -0.5, 2, delta)
+        group.current.position.x = THREE.MathUtils.damp(group.current.position.x, -1.5, 2, delta)
+      }
+      else {
+        group.current.rotation.y = THREE.MathUtils.damp(group.current.rotation.y, (-r1 - 1.5), 4, delta)
+        group.current.position.x = THREE.MathUtils.damp(group.current.position.x, (3 * r1), 4, delta)
+        group.current.scale.x = THREE.MathUtils.damp(group.current.scale.x, (-0.1 * r1 + 1.3), 4, delta)
+        group.current.scale.y = THREE.MathUtils.damp(group.current.scale.y, (-0.1 * r1 + 1.3), 4, delta)
+        group.current.scale.z = THREE.MathUtils.damp(group.current.scale.z, (-0.1 * r1 + 1.3), 4, delta)
+      }
+
     }
-    setx(THREE.MathUtils.damp(x, (8 * r1), 4, delta))
+    if (menuOpen) {
+      setx(THREE.MathUtils.damp(x, -5, 2, delta))
+    } else {
+      setx(THREE.MathUtils.damp(x, (8 * r1), 4, delta))
+
+    }
     scale = THREE.MathUtils.damp(scale, (-0.1 * r1 + 1.1), 4, delta)
+    if (languages.current) {
+      languages.current.classList.toggle('slideleft', menuOpen)
+      if (!menuOpen) {
+        languages.current.classList.toggle('flyout', r2)
+      }
+    }
+
+    if (introduction.current) {
+      if (!menuOpen) {
+        introduction.current.classList.toggle('show', !r2)
+        // introduction.current.position.y = THREE.MathUtils.damp(group.current.position.x, (3 * r1), 4, delta)
+      }
+    }
+    if (skills.current) {
+      if (!menuOpen) {
+        skills.current.classList.toggle('show', r3)
+      }
+    }
   })
 
   useEffect(() => {
@@ -287,17 +325,65 @@ export function Model(props: any) {
 
       <Html
         transform
-        ref={html}
         position={[x, -0.5, -7.9]}
         scale={[scale, scale, scale]}
-        // style={{ backgroundColor: "yellow", padding: 8 }}
-        // Portal to a fixed-position div created by the ScrollControl
         portal={{ current: scroll.fixed }}
         occlude='blending'
       >
         <div className="bg-circle-new">
         </div>
       </Html>
+
+      <Html
+        transform
+        position={[0, -0.6, -7.9]}
+        portal={{ current: scroll.fixed }}
+        occlude='blending'
+      >
+
+        <div className="w-[100vw] h-[100vh] relative languages" ref={languages}>
+          <div className="text-3xl font-bold absolute top-32 right-64 ">
+            <span className="gradient-text float1">{"<React/>"}</span>
+          </div>
+          <div className="text-3xl font-bold absolute bottom-32 right-[20%]">
+            <span className="gradient-text float2">{"Node.js"}</span>
+          </div>
+          <div className="text-3xl font-bold absolute top-[15%] left-[35%]">
+            <span className="gradient-text float3">{"Next.js"}</span>
+          </div>
+          <div className="text-3xl font-bold absolute top-[40%] right-[10%]">
+            <span className="gradient-text float4">{"Android"}</span>
+          </div>
+          <div className="text-3xl font-bold absolute bottom-[13%] left-[35%]">
+            <span className="gradient-text float5">{"Python"}</span>
+          </div>
+        </div>
+      </Html>
+
+      <Html
+        transform
+        position={[0, -0.6, -7.9]}
+        portal={{ current: scroll.fixed }}
+        occlude='blending'
+      >
+        <div className="introduction w-[100vw] h-[100vh] relative" ref={introduction}>
+          <Introduction />
+          {/* <About /> */}
+
+        </div>
+
+      </Html>
+      <Html
+        transform
+        position={[0, -0.6, -7.9]}
+        portal={{ current: scroll.fixed }}
+        occlude='blending'
+      >
+        <div className="skills w-[100vw] h-[100vh] relative" ref={skills} >
+          <About />
+        </div>
+      </Html>
+
     </>
   );
 }
