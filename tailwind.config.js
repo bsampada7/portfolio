@@ -13,7 +13,8 @@ module.exports = {
         miami: "#c41230",
         secondary: "#e000ff",
         primary: "#8401ff",
-        'primary-dark': "#7700e6",
+        "primary-light": "#b566ff",
+        "primary-dark": "#7700e6",
       },
       fontFamily: {
         handwriting: ["sacramento"],
