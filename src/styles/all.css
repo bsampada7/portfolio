@@ -9,7 +9,7 @@ html {
 }
 /* Optional: show position indicator in red */
 ::-webkit-scrollbar-thumb {
-  background: #ff0000;
+  /* background: #ff0000; */
 }
 
 /* for menu drawer */
@@ -250,13 +250,19 @@ html {
 }
 
 .card {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 300px;
-  width: 250px;
-  background: linear-gradient(#f9bc61, #fde8c9);
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* height: 300px; */
+  /* width: 250px; */
+  /* background: linear-gradient(#f9bc61, #fde8c9); */
   box-shadow: 0px 6px 6px -3px rgba(0, 0, 0, 0.2),
     0px 10px 14px 1px rgba(0, 0, 0, 0.14), 0px 4px 18px 3px rgba(0, 0, 0, 0.12);
-  border-radius: 8px;
+  /* border-radius: 8px; */
+  transition: transform 0.5s ease-in-out;
+}
+
+.card-container{
+  transform: translateX(0);
+  transition: transform 0.5s ease-in-out;
 }

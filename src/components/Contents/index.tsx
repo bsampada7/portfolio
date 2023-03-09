@@ -1,5 +1,7 @@
 import React from "react";
+import Contact from "../Contact";
 import Education from "../Education";
+import Experience from "../Experience";
 import Introduction from "../Introduction";
 import Projects from "../Projects";
 
@@ -13,13 +15,13 @@ const Contents = () => {
         <Education />
       </section>
       <section id='Experience' className="experience bg-gray-light w-full h-[100vh] flex items-center justify-center">
-        This is a Experience section
+        <Experience />
       </section>
-      <section id='Projects' className="projects bg-gray-light w-full h-[100vh] flex items-center justify-center">
+      <section id='Projects' className="projects bg-gray-light w-full h-[100vh] flex items-center justify-center overflow-auto">
         <Projects />
       </section>
       <section id='Contact' className="contact bg-gray-light w-full h-[100vh] flex items-center justify-center">
-        This is a Contact section
+        <Contact />
       </section>
     </div>
   );
