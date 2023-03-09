@@ -86,7 +86,8 @@ const Wireframe = () => {
     <>
       <mesh onPointerMove={onMove} scale={[40,40,20]} position={[0, 0, -1]} rotation={[0,0,0.8]}>
         <planeGeometry args={[1, 1, 32, 32]} />
-        <displaceMaterial key={DisplaceMaterial.key} map={texture} side={DoubleSide} {...disp} opacity={0.1} wireframe/>
+        <meshStandardMaterial key={DisplaceMaterial.key} map={texture} side={DoubleSide} {...disp} opacity={0.1} wireframe/>
+        {/* <displaceMaterial key={DisplaceMaterial.key} map={texture} side={DoubleSide} {...disp} opacity={0.1} wireframe/> */}
         
         {/* <meshStandardMaterial displacementMap={texture} side={DoubleSide}
           key={DisplaceMaterial.key}

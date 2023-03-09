@@ -127,8 +127,17 @@ a {
   }
 }
 
-.book:hover {
-  animation: none;
+.book.open {
+  animation: translateHor 0.8s ease-in-out 0s forwards;
+}
+
+@keyframes translateHor {
+  0% {
+    transform: translateX(0)
+  }
+  100% {
+    transform: translateX(40%)
+  }
 }
 
 .side {
@@ -169,7 +178,20 @@ a {
   transform-style: preserve-3d;
   transition: transform 2s;
   transform-origin: left;
+  position: absolute !important;
+  width:100%;
+  height:100%;
 }
+
+.page-1{
+  position: absolute;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  z-index: -10;
+}
+
 .front,
 .side {
   -webkit-backface-visibility: hidden;
@@ -177,8 +199,8 @@ a {
 }
 
 /* .book > .book-cover { */
-.book:hover > .book-cover {
-  transform: rotate3D(0, 1, 0, 180deg);
+.book.open > .book-cover {
+  transform: rotate3D(0, 1, 0, -180deg);
 }
 
 .book .back {
@@ -196,14 +218,7 @@ a {
   }
 }
 
-.plane-image {
-  transform: rotateY(180deg) rotateZ(30deg);
-}
 
-.plane-image {
-  offset-path: path("M4,108 C29,48 76,8 157,3");
-  animation: move 3000ms infinite forwards ease-in-out;
-}
 
 @keyframes move {
   0% {

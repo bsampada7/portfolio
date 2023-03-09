@@ -30,7 +30,7 @@ const About = () => {
         <div className="flex flex-col text-2xl mt-4">
           <>
             {skills.map(skill =>
-              <div className="flex gap-20 justify-between items-center">
+              <div className="flex gap-20 justify-between items-center" key={skill.name}>
                 <span>{skill.name}</span>
                 <ProgressBar widthClass={`w-${skill.level}`} />
               </div>

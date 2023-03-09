@@ -1,5 +1,4 @@
 import { MyStoreContext } from "@/store/mystore";
-import { ScrollPage } from "@/store/mystorereducer";
 import { Html, useGLTF, useScroll } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useContext, useEffect, useRef, useState } from "react";

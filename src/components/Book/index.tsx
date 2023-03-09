@@ -10,6 +10,8 @@ import Name from "../Texts/Name";
 // let interval: any
 
 const Book = () => {
+  const [isBookOpen, setisBookOpen] = useState(false);
+
 
 
   // useEffect(() => {
@@ -32,16 +34,21 @@ const Book = () => {
   //   })
   // }, []);
 
+  const openBook = () => {
+    setisBookOpen(true);
+  }
+
 
   return (
-    <div className="book relative h-96 w-64 rounded-br-sm">
-    
+    <div className={`book relative rounded-br-sm md:w-auto ${isBookOpen && 'open'}`}>
+
 
       <div className="side-bar">
         <div className="upper-half h-3/5 bg-neutral-800"></div>
         <div className="lower-half h-2/5 bg-neutral-100"></div>
       </div>
-      {/* <div className="page-1">
+
+      <div className="page-1 pointer-events-none">
         <div className="page-1-front absolute h-full w-full bg-neutral-100 p-4 top-0">
           <img src="images/mu-1.png" alt="Miami University Logo" className="w-16 m-auto"></img>
           <div className="mt-2 text-xs">
@@ -74,16 +81,16 @@ const Book = () => {
             </ul>
 
           </div>
-          {/* <div>
+          <div>
             <span id='text'></span>
             <div className='console-underscore inline-block' id='console'>&#95;</div>
-          </div> */}
+          </div>
 
-        {/* </div>
+        </div>
 
       </div>
 
-      <div className="plane-animation w-40 h-28  absolute top-36 -left-20 z-10">
+      {/* <div className="plane-animation w-40 h-28  absolute top-36 -left-20 z-10">
         <img src="images/usa.webp" alt='USA' className="absolute w-4 right-0"></img>
         <img src="images/nepal.svg" alt='Nepal' className="absolute w-4 bottom-0"></img>
         <svg width="160" height="112" viewBox="0 0 160 112" xmlns="http://www.w3.org/2000/svg" className="col-span-3">
@@ -96,8 +103,8 @@ const Book = () => {
           </g>
         </svg>
         <img src="images/plane.png" alt='plane' className="plane-image absolute w-14 top-0 left-0"></img>
-      </div> */} 
-      <div className="book-cover relative h-full w-full">
+      </div> */}
+      <div className="book-cover relative h-full w-full" onClick={openBook}>
         <div className="back absolute h-full w-full bg-neutral-100 p-4">
           <img src="images/tu.png" alt="Tribhuvan University Logo" className="w-8 m-auto"></img>
           <div className="mt-2 text-xs">
@@ -152,6 +159,8 @@ const Book = () => {
           <div className="lower-half h-2/5 bg-neutral-100"></div>
         </div>
       </div>
+
+
 
     </div>
   );

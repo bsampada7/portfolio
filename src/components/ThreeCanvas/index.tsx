@@ -11,7 +11,7 @@ const ThreeCanvas = () => {
     <div className="absolute w-full h-[100vh] top-0 left-0">
       <Canvas shadows className="bg-[lavenderblush]">
         <Suspense fallback={null}>
-          <ScrollControls pages={1}>
+          <ScrollControls pages={0.5}>
             <Model />
           </ScrollControls>
         </Suspense>

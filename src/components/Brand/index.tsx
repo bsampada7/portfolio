@@ -23,7 +23,7 @@ const Brand = () => {
   return (
     // bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 
     <div className="flex justify-between fixed top-0  z-50
-                    text-primary p-4">
+                    text-primary m-8">
       <div>
         <div className="word">
           <span>S</span>

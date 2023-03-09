@@ -1,27 +1,31 @@
 import React from "react";
+import Card from "../Card";
 
 const Projects = () => {
   return (
-    <section id="projects" className="bg-green">
+    <div className="flex flex-col w-full h-full p-10 pt-32 bg-gray-dark relative">
+      <Card>
+        This is a test
+      </Card>
       <div>
         {/* Room Tool V2 */}
-        </div>
+      </div>
       <div>
         {/* Virtual Rug Studio */}
-        </div>
+      </div>
       <div>
         {/* Beyond dreams page 13 Showcase */}
-        </div>
+      </div>
       <div>
         {/* Room View Showcase, maybe beyonddreams room with the moving water */}
-        </div>
+      </div>
       <div>
         {/* One barrister */}
-        </div>
+      </div>
       <div>
         {/* ILDA */}
-        </div>
-    </section>
+      </div>
+    </div >
   );
 };
 

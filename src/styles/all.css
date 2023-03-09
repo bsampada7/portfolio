@@ -158,3 +158,105 @@ html {
 .w-11\/12 {
   width: 91.666667%;
 }
+.h-1\/12 {
+  height: 8.333333%;
+}
+.h-2\/12 {
+  height: 16.666667%;
+}
+.h-3\/12 {
+  height: 25%;
+}
+.h-4\/12 {
+  height: 33.333333%;
+}
+.h-5\/12 {
+  height: 41.666667%;
+}
+.h-6\/12 {
+  height: 50%;
+}
+.h-7\/12 {
+  height: 58.333333%;
+}
+.h-8\/12 {
+  height: 66.666667%;
+}
+.h-9\/12 {
+  height: 75%;
+}
+.h-10\/12 {
+  height: 83.333333%;
+}
+.h-11\/12 {
+  height: 91.666667%;
+}
+
+/* .book{
+  width: 300px;
+  padding-bottom: 150%;
+} */
+
+.book,
+.book-cover {
+  width: 50vw;
+  height: 75vw;
+}
+
+@media (min-width: 900px) {
+  .book,
+  .book-cover {
+    width: 40vw;
+    height: min(60vw, 90vh);
+  }
+}
+
+.circuit-svg {
+  /* margin-top: 7rem; */
+  position: absolute;
+  opacity: 0.5;
+}
+
+.path {
+  animation: draw 14s infinite;
+  animation-timing-function: linear;
+}
+
+.path-2 {
+  animation: draw 14s infinite;
+  animation-delay: 1s;
+  animation-timing-function: linear;
+}
+
+@keyframes draw {
+  0% {
+  }
+  100% {
+    stroke-dashoffset: 0;
+    stroke-opacity: 1;
+  }
+}
+
+.text-silver {
+  color: silver;
+}
+.plane-image {
+  transform: rotateY(180deg) rotateZ(40deg);
+}
+
+.plane-image {
+  offset-path: path("M27,15 C211,2 404,106 483,245");
+  animation: move 3000ms forwards ease-in-out;
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  width: 250px;
+  background: linear-gradient(#f9bc61, #fde8c9);
+  box-shadow: 0px 6px 6px -3px rgba(0, 0, 0, 0.2),
+    0px 10px 14px 1px rgba(0, 0, 0, 0.14), 0px 4px 18px 3px rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+}
