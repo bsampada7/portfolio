@@ -18,13 +18,14 @@ const config1 = {
   ease: (x: number) => Math.sqrt(1 - Math.pow(x - 1, 2))
 }
 
-const disp1 = 0.01
+const disp = {amount: 0.05}
 
 // secondary: "#e000ff",
 // primary: "#8401ff",
+// #273444
 
 const DisplaceMaterial = shaderMaterial(
-  { map: null, color: new Color('#e000ff'), color2: new Color('8401ff'), amount: 1 },
+  { map: null, color: new Color('#e000ff'), color2: new Color('#8401ff'), amount: 1 },
   `
     uniform sampler2D map;
     uniform float amount;
@@ -60,24 +61,24 @@ const positions = Array.from({ length: 500 }, (i) => [
 ])
 
 const Wireframe = () => {
-  const { blend, ...config } = useControls('Trail', {
-    size: { value: 64, min: 8, max: 256, step: 8 },
-    radius: { value: 0.3, min: 0, max: 1 },
-    maxAge: { value: 750, min: 300, max: 1000 },
-    interpolate: { value: 0, min: 0, max: 2, step: 1 },
-    smoothing: { value: 0, min: 0, max: 0.99, step: 0.01 },
-    minForce: { value: 0.3, min: 0, max: 1, step: 0.1 },
-    intensity: { value: 0.2, min: 0, max: 1, step: 0.1 },
-    blend: { value: 'screen', options: ['source-over', 'screen'] },
-    // ease: { value: 'easeCircleOut', options: Object.keys(easings) },
-  })
+  // const { blend, ...config } = useControls('Trail', {
+  //   size: { value: 64, min: 8, max: 256, step: 8 },
+  //   radius: { value: 0.3, min: 0, max: 1 },
+  //   maxAge: { value: 750, min: 300, max: 1000 },
+  //   interpolate: { value: 0, min: 0, max: 2, step: 1 },
+  //   smoothing: { value: 0, min: 0, max: 0.99, step: 0.01 },
+  //   minForce: { value: 0.3, min: 0, max: 1, step: 0.1 },
+  //   intensity: { value: 0.2, min: 0, max: 1, step: 0.1 },
+  //   blend: { value: 'screen', options: ['source-over', 'screen'] },
+  //   // ease: { value: 'easeCircleOut', options: Object.keys(easings) },
+  // })
 
-  const disp = useControls('Displacement', {
-    amount: { value: 0.1, min: 0, max: 0.5 }
-  })
-  console.log(disp)
+  // const disp = useControls('Displacement', {
+  //   amount: { value: 0.1, min: 0, max: 0.5 }
+  // })
+  // console.log(disp)
 
-  const blend1 = blend as CanvasRenderingContext2D['globalCompositeOperation']
+  // const blend1 = blend as CanvasRenderingContext2D['globalCompositeOperation']
   // const [texture, onMove] = useTrailTexture({ ...config, blend: blend1 })
   const [texture, onMove] = useTrailTexture(config1)
 
@@ -85,9 +86,9 @@ const Wireframe = () => {
   return (
     <>
       <mesh onPointerMove={onMove} scale={[40,40,20]} position={[0, 0, -1]} rotation={[0,0,0.8]}>
-        <planeGeometry args={[1, 1, 32, 32]} />
-        <meshStandardMaterial key={DisplaceMaterial.key} map={texture} side={DoubleSide} {...disp} opacity={0.1} wireframe/>
-        {/* <displaceMaterial key={DisplaceMaterial.key} map={texture} side={DoubleSide} {...disp} opacity={0.1} wireframe/> */}
+        <planeGeometry args={[1, 1, 128, 128]} />
+        {/* <meshStandardMaterial key={DisplaceMaterial.key} map={texture} side={DoubleSide} {...disp} opacity={0.1} wireframe/> */}
+        <displaceMaterial key={DisplaceMaterial.key} map={texture} side={DoubleSide} {...disp} opacity={0.1} wireframe/>
         
         {/* <meshStandardMaterial displacementMap={texture} side={DoubleSide}
           key={DisplaceMaterial.key}
