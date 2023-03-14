@@ -10,8 +10,6 @@ const Projects = () => {
       const width = containerRef.current.clientWidth
       const windowWidth = window.innerWidth
       const translate = (windowWidth / 2) - ((width / 5) * (activeCard + 1)) + ((width / 5) / 2) - 32
-      console.log(width, windowWidth, translate);
-
       containerRef.current.style.transform = `translateX(${translate}px)`
     };
 

@@ -13,7 +13,7 @@ const Card = ({ name, imgclass, badges, description, github, livelink, className
       <div className="flex flex-wrap gap-2 justify-center">
         <>
           {badges.map((item) =>
-            <Badge text={item.text} color={item.color} />
+            <Badge text={item.text} color={item.color} key={item.text} />
           )}
         </>
       </div>

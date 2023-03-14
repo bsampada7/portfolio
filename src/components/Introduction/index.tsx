@@ -1,3 +1,4 @@
+import Link from "next/link";
 import PrimaryButton from "../PrimaryButton";
 
 const Introduction = () => {
@@ -15,7 +16,10 @@ const Introduction = () => {
       </div>
 
       <div className="absolute left-10 top-96 z-10">
-        <PrimaryButton text={"Get in touch"} className={"mt-8 ml-0 pointer-events-auto"} />
+        <Link href={"#Contact"} className="pointer-events-auto">
+          <PrimaryButton text={"Get in touch"} className={"mt-8 ml-0 pointer-events-auto cursor-pointer"} />
+        </Link>
+
       </div>
     </div>
   );

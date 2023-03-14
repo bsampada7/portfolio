@@ -32,11 +32,9 @@ export default function ContactForm() {
     resolver: yupResolver(schema)
   });
   const [formSubmitError, setformSubmitError] = useState<string | null>(null);
-  const [enableSubmit, setenableSubmit] = useState(false);
 
 
   const onSubmit = (data: any) => {
-    setformSubmitError("error")
 
     window.grecaptcha.ready(function () {
       window.grecaptcha.execute('6LdGjc8kAAAAACy3ewbRsVGj4xY8-eVan5Atw037', { action: 'submit' }).then(function (token: any) {
@@ -44,19 +42,21 @@ export default function ContactForm() {
         Object.keys(data).forEach(key => {
           bodyFormData.append(key, data[key]);
         })
-        bodyFormData.append('g-recaptcha-response', token);
+        // bodyFormData.append('g-recaptcha-response', token);
 
         axios({
           method: "post",
           // url: "https://onebarrister.co.uk/email.php",
-          data: bodyFormData,
-          headers: { "Content-Type": "multipart/form-data" },
+          url: "https://formsubmit.co/bhujelsampada@gmail.com",
+          data: data,
+          headers: { "Content-Type": "application/json" },
         })
           .then(function (response) {
             console.log(response);
           })
           .catch(function (response) {
             console.log(response);
+            setformSubmitError("error")
           });
       });
     });
@@ -65,7 +65,6 @@ export default function ContactForm() {
 
   const onFormChange = () => {
     setformSubmitError(null)
-    setenableSubmit(true)
   }
 
   return (
@@ -86,13 +85,13 @@ export default function ContactForm() {
             placeholder="Your email address"
             register={register}
             error={errors.email?.message} />
-
+            <input type="text" name="_honey" className='hidden'></input>
           <div className="flex flex-col">
             <label className={`text-base text-neutral-700 mb-2`}>Your message</label>
 
             <textarea
               {...register("message")}
-              rows={5}
+              rows={4}
               placeholder={"Your message"}
               className='text-neutral-700 text-base mb-2 p-2 border border-gray outline-primary-light'
             />

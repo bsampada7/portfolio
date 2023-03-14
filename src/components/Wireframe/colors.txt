@@ -1,0 +1,3 @@
+rich black rgb(15, 16, 32)
+
+dark purple #1e152e

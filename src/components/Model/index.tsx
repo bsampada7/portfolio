@@ -1,390 +1,147 @@
-import { MyStoreContext } from "@/store/mystore";
-import { Html, useGLTF, useScroll } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
-import { useContext, useEffect, useRef, useState } from "react";
-import * as THREE from 'three';
-import { GLTF } from "three/examples/jsm/loaders/GLTFLoader";
-import About from "../About";
-import Introduction from "../Introduction";
+import * as THREE from 'three'
+import { Ref, useRef, useState } from 'react'
+import { Canvas, useFrame, useThree } from '@react-three/fiber'
+import { useIntersect, Image, ScrollControls, Scroll, useGLTF, useScroll, Html } from '@react-three/drei'
+import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader'
 
 type GLTFResult = GLTF & {
   nodes: any
   materials: any
 }
 
-declare global {
-  interface Window { scene: any; }
-}
-let scale = 1.1
-
-export function Model(props: any) {
-  const { nodes, materials } = useGLTF("http://localhost:3000/model/me6.glb") as GLTFResult;
+function Avatar() {
+  const { nodes, materials } = useGLTF("/model/test.gltf") as GLTFResult;
+  const visible = useRef(false)
+  const ref = useIntersect((isVisible) => (visible.current = isVisible)) as any
+  const { height } = useThree((state) => state.viewport)
   const scroll = useScroll()
-  const group = useRef<any>(null)
-  const spotlight = useRef<any>(null)
-  const languages = useRef<any>(null)
-  const introduction = useRef<any>(null)
-  const skills = useRef<any>(null)
-  const { state, dispatch } = useContext(MyStoreContext);
-  const { menuOpen } = state;
-
-  const [x, setx] = useState(0);
-
-
-  useFrame((_, delta) => {
-    const r1 = scroll.range(0, 1)
-    const r2 = scroll.range(1 / 2, 1)
-    const r3 = scroll.range(7 / 10, 1)
-
-    if (group.current) {
-      if (menuOpen) {
-        group.current.rotation.y = THREE.MathUtils.damp(group.current.rotation.y, -0.5, 2, delta)
-        group.current.position.x = THREE.MathUtils.damp(group.current.position.x, -1.5, 2, delta)
-      }
-      else {
-        group.current.rotation.y = THREE.MathUtils.damp(group.current.rotation.y, (-r1 - 1.5), 4, delta)
-        group.current.position.x = THREE.MathUtils.damp(group.current.position.x, (3 * r1), 4, delta)
-        group.current.scale.x = THREE.MathUtils.damp(group.current.scale.x, (-0.1 * r1 + 1.3), 4, delta)
-        group.current.scale.y = THREE.MathUtils.damp(group.current.scale.y, (-0.1 * r1 + 1.3), 4, delta)
-        group.current.scale.z = THREE.MathUtils.damp(group.current.scale.z, (-0.1 * r1 + 1.3), 4, delta)
-      }
-
-    }
-    if (menuOpen) {
-      setx(THREE.MathUtils.damp(x, -5, 2, delta))
-    } else {
-      setx(THREE.MathUtils.damp(x, (8 * r1), 4, delta))
-
-    }
-    scale = THREE.MathUtils.damp(scale, (-0.1 * r1 + 1.1), 4, delta)
-    if (languages.current) {
-      languages.current.classList.toggle('slideleft', menuOpen)
-      if (!menuOpen) {
-        languages.current.classList.toggle('flyout', r2)
-      }
-    }
-
-    if (introduction.current) {
-      if (!menuOpen) {
-        introduction.current.classList.toggle('show', !r2)
-        // introduction.current.position.y = THREE.MathUtils.damp(group.current.position.x, (3 * r1), 4, delta)
-      }
-    }
-    if (skills.current) {
-      if (!menuOpen) {
-        skills.current.classList.toggle('show', r3)
-      }
-    }
+  useFrame((state, delta) => {
+    if (!(ref?.current)) return
+    // ref.current.position.y = THREE.MathUtils.damp(ref.current.position.y, visible.current ? 0 : -height / 2 + 1, 4, delta)
+    const r1 = scroll.range(0, 1 / 5)
+    ref.current.rotation.y = THREE.MathUtils.damp(ref.current.rotation.y, (-r1 - 1.5), 4, delta)
+    ref.current.position.x = THREE.MathUtils.damp(ref.current.position.x, (3 * r1), 4, delta)
+    // ref.current.position.y = THREE.MathUtils.damp(ref.current.position.y, (3 * r1), 4, delta)
+    ref.current.scale.x = THREE.MathUtils.damp(ref.current.scale.x, (-0.1 * r1 + 1.3), 4, delta)
+    ref.current.scale.y = THREE.MathUtils.damp(ref.current.scale.y, (-0.1 * r1 + 1.3), 4, delta)
+    ref.current.scale.z = THREE.MathUtils.damp(ref.current.scale.z, (-0.1 * r1 + 1.3), 4, delta)
   })
 
-  useEffect(() => {
-    if (spotlight.current) {
-      spotlight.current.shadow.bias = -0.0001
-      spotlight.current.blurSamples = 8
-      spotlight.current.focus = 1
-    }
-  }, []);
-
-
   return (
-    <>
-      <>
-        <spotLight position={[0, 4.729254238806093, 2.3646271194030466]}
-          intensity={0.5} decay={2} angle={1.0471975511965976} penumbra={1}
-
-        />
-        <pointLight intensity={0.5} position={[-2.3646271194030466, 1.1823135597015233, -3.54694067910457]} />
-        <directionalLight castShadow intensity={0.5}>
-          <orthographicCamera args={[-10, 10, 10, -10, 0.5, 30]} />
-        </directionalLight>
-        <ambientLight intensity={1 / 3}></ambientLight>
-
-        <group rotation={[0, -1.5, 0]} position={[0, -3.5, 0]} scale={[1.3, 1.3, 1.3]} dispose={null} ref={group}>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Head1_HairStrand000.geometry}
-            material={materials.Sally_hair}
-            position={[-0.1, 4.29, 0.24]}
-            rotation={[-Math.PI, 1.55, -Math.PI]}
-            scale={0.01}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Head1_HairStrand001.geometry}
-            material={materials.Sally_hair}
-            position={[-0.1, 4.29, 0.24]}
-            rotation={[-Math.PI, 1.55, -Math.PI]}
-            scale={0.01}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Head1_HairStrand002.geometry}
-            material={materials.Sally_hair}
-            position={[-0.1, 4.29, 0.24]}
-            rotation={[-Math.PI, 1.55, -Math.PI]}
-            scale={0.01}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Head1_HairStrand003.geometry}
-            material={materials.Sally_hair}
-            position={[-0.1, 4.29, 0.24]}
-            rotation={[-Math.PI, 1.55, -Math.PI]}
-            scale={0.01}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Head1_HairStrand004.geometry}
-            material={materials.Sally_hair}
-            position={[-0.1, 4.29, 0.24]}
-            rotation={[-Math.PI, 1.55, -Math.PI]}
-            scale={0.01}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Head1_HairStrand005.geometry}
-            material={materials.Sally_hair}
-            position={[-0.1, 4.29, 0.24]}
-            rotation={[-Math.PI, 1.55, -Math.PI]}
-            scale={0.01}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Head1_HairStrand006.geometry}
-            material={materials.Sally_hair}
-            position={[-0.1, 4.29, 0.24]}
-            rotation={[-Math.PI, 1.55, -Math.PI]}
-            scale={0.01}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Head1_HairStrand007.geometry}
-            material={materials.Sally_hair}
-            position={[-0.1, 4.29, 0.24]}
-            rotation={[-Math.PI, 1.55, -Math.PI]}
-            scale={0.01}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Head1_HairStrand008.geometry}
-            material={materials.Sally_hair}
-            position={[-0.1, 4.29, 0.24]}
-            rotation={[-Math.PI, 1.55, -Math.PI]}
-            scale={0.01}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Head1_HairStrand009.geometry}
-            material={materials.Sally_hair}
-            position={[-0.1, 4.29, 0.24]}
-            rotation={[-Math.PI, 1.55, -Math.PI]}
-            scale={0.01}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Head1_HairStrand010.geometry}
-            material={materials.Sally_hair}
-            position={[-0.1, 4.29, 0.24]}
-            rotation={[-Math.PI, 1.55, -Math.PI]}
-            scale={0.01}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Head1_HairStrand011.geometry}
-            material={materials.Sally_hair}
-            position={[-0.1, 4.29, 0.24]}
-            rotation={[-Math.PI, 1.55, -Math.PI]}
-            scale={0.01}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Head1_HairStrand012.geometry}
-            material={materials.Sally_hair}
-            position={[-0.1, 4.29, 0.24]}
-            rotation={[-Math.PI, 1.55, -Math.PI]}
-            scale={0.01}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Head1_HairStrand013.geometry}
-            material={materials.Sally_hair}
-            position={[-0.1, 4.29, 0.24]}
-            rotation={[-Math.PI, 1.55, -Math.PI]}
-            scale={0.01}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Head1_HairStrand014.geometry}
-            material={materials.Sally_hair}
-            position={[-0.1, 4.29, 0.24]}
-            rotation={[-Math.PI, 1.55, -Math.PI]}
-            scale={0.01}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Head1_HairStrand015.geometry}
-            material={materials.Sally_hair}
-            position={[-0.1, 4.29, 0.24]}
-            rotation={[-Math.PI, 1.55, -Math.PI]}
-            scale={0.01}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Head1_HairStrand016.geometry}
-            material={materials.Sally_hair}
-            position={[-0.1, 4.29, 0.24]}
-            rotation={[-Math.PI, 1.55, -Math.PI]}
-            scale={0.01}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Head1_HairStrand017.geometry}
-            material={materials.Sally_hair}
-            position={[-0.1, 4.29, 0.24]}
-            rotation={[-Math.PI, 1.55, -Math.PI]}
-            scale={0.01}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Head1_HairStrand018.geometry}
-            material={materials.Sally_hair}
-            position={[-0.1, 4.29, 0.24]}
-            rotation={[-Math.PI, 1.55, -Math.PI]}
-            scale={0.01}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Head1_HairStrand019.geometry}
-            material={materials.Sally_hair}
-            position={[-0.1, 4.29, 0.24]}
-            rotation={[-Math.PI, 1.55, -Math.PI]}
-            scale={0.01}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Head1_HairStrand020.geometry}
-            material={materials.Sally_hair}
-            position={[-0.1, 4.29, 0.24]}
-            rotation={[-Math.PI, 1.55, -Math.PI]}
-            scale={0.01}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Head1_HairStrand021.geometry}
-            material={materials.Sally_hair}
-            position={[-0.1, 4.29, 0.24]}
-            rotation={[-Math.PI, 1.55, -Math.PI]}
-            scale={0.01}
-          />
-          <mesh
-            name="FBHead"
-            castShadow
-            receiveShadow
-            geometry={nodes.FBHead.geometry}
-            material={materials.FBHead_preview_mat}
-            morphTargetDictionary={nodes.FBHead.morphTargetDictionary}
-            morphTargetInfluences={nodes.FBHead.morphTargetInfluences}
-            position={[-0.18, 4.46, 0.25]}
-            rotation={[-Math.PI, 1.55, -Math.PI]}
-            scale={0.29}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Ch29.geometry}
-            material={materials["Ch29_Body.002"]}
-            position={[-0.28, 0.4, 0.25]}
-            rotation={[1.57, -0.01, -1.49]}
-            scale={0.03}
-          />
-        </group>
-      </>
-
-      <Html
-        transform
-        position={[x, -0.5, -7.9]}
-        scale={[scale, scale, scale]}
-        portal={{ current: scroll.fixed }}
-        occlude='blending'
-      >
-        <div className="bg-circle-new">
-        </div>
-      </Html>
-
-      <Html
-        transform
-        position={[0, -0.6, -7.9]}
-        portal={{ current: scroll.fixed }}
-        occlude='blending'
-      >
-
-        <div className="w-[100vw] h-[100vh] relative languages" ref={languages}>
-          <div className="text-3xl font-bold absolute top-32 right-64 ">
-            <span className="gradient-text float1">{"<React/>"}</span>
-          </div>
-          <div className="text-3xl font-bold absolute bottom-32 right-[20%]">
-            <span className="gradient-text float2">{"Node.js"}</span>
-          </div>
-          <div className="text-3xl font-bold absolute top-[15%] left-[35%]">
-            <span className="gradient-text float3">{"Next.js"}</span>
-          </div>
-          <div className="text-3xl font-bold absolute top-[40%] right-[10%]">
-            <span className="gradient-text float4">{"Android"}</span>
-          </div>
-          <div className="text-3xl font-bold absolute bottom-[13%] left-[35%]">
-            <span className="gradient-text float5">{"Python"}</span>
-          </div>
-        </div>
-      </Html>
-
-      <Html
-        transform
-        position={[0, -0.6, -7.9]}
-        portal={{ current: scroll.fixed }}
-        occlude='blending'
-      >
-        <div className="introduction w-[100vw] h-[100vh] relative" ref={introduction}>
-          <Introduction />
-          {/* <About /> */}
-
-        </div>
-
-      </Html>
-      <Html
-        transform
-        position={[0, -0.6, -7.9]}
-        portal={{ current: scroll.fixed }}
-        occlude='blending'
-      >
-        <div className="skills w-[100vw] h-[100vh] relative" ref={skills} >
-          <About />
-        </div>
-      </Html>
-
-    </>
-  );
+    <group rotation={[0, -1.5, 0]} position={[0, -3.5, 0]} scale={[1.3, 1.3, 1.3]} dispose={null} ref={ref}>
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.front_hair.geometry}
+        material={materials.Sally_hair}
+        position={[-0.1, 4.29, 0.24]}
+        rotation={[-Math.PI, 1.55, -Math.PI]}
+        scale={0.01}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Head1_HairStrand021.geometry}
+        material={materials.Sally_hair}
+        position={[-0.1, 4.29, 0.24]}
+        rotation={[-Math.PI, 1.55, -Math.PI]}
+        scale={0.01}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.FBHead.geometry}
+        material={materials.FBHead_preview_mat}
+        position={[-0.18, 4.46, 0.25]}
+        rotation={[-Math.PI, 1.55, -Math.PI]}
+        scale={0.29}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Ch29.geometry}
+        material={materials["Ch29_Body.002"]}
+        position={[-0.28, 0.4, 0.25]}
+        rotation={[1.57, -0.01, -1.49]}
+        scale={0.03}
+      />
+    </group>
+  )
 }
 
-useGLTF.preload("http://localhost:3000/model/me6.glb");
+function AvatarBg() {
+  const visible = useRef(false)
+  const { height } = useThree((state) => state.viewport)
+  const scroll = useScroll()
+  const [scale, setscale] = useState(1.1);
+  const [positionX, setpositionX] = useState(0);
+  const { gl } = useThree();
+
+
+  useFrame((state, delta) => {
+    const r1 = scroll.range(0, 1 / 5)
+    setpositionX(THREE.MathUtils.damp(positionX, (8 * r1), 4, delta))
+    setscale(THREE.MathUtils.damp(scale, (-0.1 * r1 + 1.1), 4, delta))
+  })
+
+  return (
+    <Html
+      transform
+      position={[positionX, -0.5, -7.9]}
+      scale={[scale, scale, scale]}
+      portal={{current: gl.domElement.parentNode}}
+      occlude='blending'
+      wrapperClass={"pointer-none-children-strict"}
+    >
+      <div className="bg-circle-new pointer-events-none">
+      </div>
+    </Html>
+  )
+}
+
+function Items() {
+  const { width: w, height: h } = useThree((state) => state.viewport)
+  return (
+    <>
+      <AvatarBg />
+      <Avatar />
+
+    </>
+    // <Scroll>
+    //   <Avatar />
+    // </Scroll>
+  )
+}
+
+function EnvSettings() {
+  return (
+    <>
+      <spotLight position={[0, 4.729254238806093, 2.3646271194030466]} intensity={0.5} decay={2} angle={1.0471975511965976} penumbra={1} />
+      <pointLight intensity={0.5} position={[-2.3646271194030466, 1.1823135597015233, -3.54694067910457]} />
+      <directionalLight castShadow intensity={0.5}>
+        <orthographicCamera args={[-10, 10, 10, -10, 0.5, 30]} />
+      </directionalLight>
+      <ambientLight intensity={1 / 3}></ambientLight>
+    </>
+  )
+}
+
+export const Model = () => (
+  <Canvas>
+    <EnvSettings />
+    <ScrollControls pages={5}>
+      <Items />
+      <Scroll html>
+        <h1 style={{ position: 'absolute', top: `100vh`, right: '20vw', fontSize: '25em', transform: `translate3d(0,-100%,0)` }}>all</h1>
+        <h1 style={{ position: 'absolute', top: '180vh', left: '10vw' }}>hail</h1>
+        <h1 style={{ position: 'absolute', top: '260vh', right: '10vw' }}>thee,</h1>
+        <h1 style={{ position: 'absolute', top: '350vh', left: '10vw' }}>thoth</h1>
+        <h1 style={{ position: 'absolute', top: '450vh', right: '10vw' }}>
+          her
+          <br />
+          mes.
+        </h1>
+      </Scroll>
+    </ScrollControls>
+  </Canvas>
+)

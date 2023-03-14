@@ -8,16 +8,18 @@ const ThreeCanvas = () => {
 
 
   return (
-    <div className="absolute w-full h-[100vh] top-0 left-0">
-      <Canvas shadows className="bg-[lavenderblush]">
+    <div className="absolute w-full mx-auto h-[100vh] top-0 left-0">
+      {/* <Canvas shadows className="bg-[lavenderblush]">
         <Suspense fallback={null}>
-          <ScrollControls pages={0.5}>
+          <ScrollControls pages={1}>
             <Model />
           </ScrollControls>
         </Suspense>
         <fog attach="fog" args={['lightpink', 60, 100]} />
-        {/* <Environment preset="forest" /> */}
-      </Canvas>
+      </Canvas> */}
+      <Model />
+      {/* <Environment preset="forest" /> */}
+
     </div>
   );
 };

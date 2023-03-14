@@ -266,3 +266,10 @@ html {
   transform: translateX(0);
   transition: transform 0.5s ease-in-out;
 }
+.pointer-none-children-strict{
+  pointer-events: none !important;
+}
+
+.pointer-none-children-strict *{
+  pointer-events: none !important;
+}

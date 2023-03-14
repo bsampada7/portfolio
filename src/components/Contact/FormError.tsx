@@ -13,10 +13,9 @@ export default function FormError({ show, className }: { show: boolean, classNam
       leaveFrom="opacity-100 rotate-0 scale-100 "
       leaveTo="opacity-0 scale-95 "
     >
-      <div className={`flex bottom-0 left-0 gap-2 p-4 bg-danger-light md:rounded-lg ${className || ''}`}>
+      <div className={`flex bottom-0 left-0 gap-2 bg-danger-light md:rounded-lg ${className || ''}`}>
         <span className="leading-[1.625rem] font-bold">
-          Sorry, we ran into an issue. Please try again in a while or
-          refresh the page if the problem persists.
+          Sorry, we ran into an issue.
         </span>
       </div>
     </Transition>

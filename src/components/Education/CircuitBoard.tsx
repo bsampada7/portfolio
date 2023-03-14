@@ -4,12 +4,12 @@ const CircuitBoard = () => {
   return (
     <>
       <svg viewBox="0 0 800 800" version="1.1" className="circuit-svg">
-        <g id="paths" className="path" stroke="#8401ff" stroke-width="2"
+        <g id="paths" className="path" stroke="#8401ff" strokeWidth="2"
           transform="translate(0.000000, -400.000000)"
-          fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke-opacity="1" stroke-dasharray="30,150" stroke-dashoffset="2000">
+          fillRule="evenodd" strokeLinecap="round" strokeLinejoin="round" fill="none" strokeOpacity="1" strokeDasharray="30,150" strokeDashoffset="2000">
           <g id="left" transform="translate(461.000000, 416.000000)">
-            <polyline points="18 0 27 0 55 28 95 28 115 48 127 48" stroke-dasharray="20,100"></polyline>
-            <polyline points="18 23 27 23 47 43 86 43 107 64 127 64" stroke-dasharray="50,150"></polyline>
+            <polyline points="18 0 27 0 55 28 95 28 115 48 127 48" strokeDasharray="20,100"></polyline>
+            <polyline points="18 23 27 23 47 43 86 43 107 64 127 64" strokeDasharray="50,150"></polyline>
             <polyline points="-8.03677904e-06 10.9791757 26.9791757 10.9791757 51 35 90 35 111 56 127 56"></polyline>
             <polyline points="72 92 98 92 110 80 127 80"></polyline>
             <polyline points="84 80 99 80 107 72 127 72"></polyline>
@@ -24,7 +24,7 @@ const CircuitBoard = () => {
         </g>
         <g id="paths-2" className="path-2"
           transform="translate(0.000000, -400.000000)"
-          stroke="#8401ff" stroke-width="3" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke-opacity="1" stroke-dasharray="50,150" stroke-dashoffset="2000">
+          stroke="#8401ff" strokeWidth="3" fillRule="evenodd" strokeLinecap="round" strokeLinejoin="round" fill="none" strokeOpacity="1" strokeDasharray="50,150" strokeDashoffset="2000">
           <g id="right" transform="translate(620.000000, 427.000000)">
             <polyline points="16 69 28 69 44 85 52 85 56 81 68 81"></polyline>
             <polyline points="16 61 100 61 104 65 111 65"></polyline>
@@ -38,7 +38,7 @@ const CircuitBoard = () => {
         <g id="paths-bg"
           transform="translate(0.000000, -400.000000)"
           opacity={0.2}
-          stroke="cornsilk" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+          stroke="cornsilk" strokeWidth="1.5" fill="none" fillRule="evenodd" strokeLinecap="round" strokeLinejoin="round">
           <g id="left" transform="translate(461.000000, 416.000000)">
             <polyline points="18 0 27 0 55 28 95 28 115 48 127 48"></polyline>
             <polyline points="18 23 27 23 47 43 86 43 107 64 127 64"></polyline>

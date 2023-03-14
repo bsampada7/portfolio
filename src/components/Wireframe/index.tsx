@@ -1,9 +1,9 @@
 import { Point, PointMaterial, Points, shaderMaterial, useTrailTexture } from "@react-three/drei";
 import { useControls } from "leva";
 import React, { useState } from "react";
-import { DoubleSide, MathUtils, Color } from "three";
+import { DoubleSide, MathUtils, Color, ShaderMaterial } from "three";
 import * as easings from 'd3-ease'
-import { extend } from "@react-three/fiber";
+import { extend, ReactThreeFiber } from "@react-three/fiber";
 
 
 const config1 = {
@@ -54,6 +54,14 @@ const DisplaceMaterial = shaderMaterial(
 )
 extend({ DisplaceMaterial })
 
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'displaceMaterial': any
+    }
+  }
+}
+
 const positions = Array.from({ length: 500 }, (i) => [
   MathUtils.randFloatSpread(100),
   MathUtils.randFloatSpread(100),
@@ -87,8 +95,8 @@ const Wireframe = () => {
     <>
       <mesh onPointerMove={onMove} scale={[40,40,20]} position={[0, 0, -1]} rotation={[0,0,0.8]}>
         <planeGeometry args={[1, 1, 128, 128]} />
-        {/* <meshStandardMaterial key={DisplaceMaterial.key} map={texture} side={DoubleSide} {...disp} opacity={0.1} wireframe/> */}
         <displaceMaterial key={DisplaceMaterial.key} map={texture} side={DoubleSide} {...disp} opacity={0.1} wireframe/>
+        {/* <displaceMaterial key={DisplaceMaterial.key} map={texture} side={DoubleSide} {...disp} opacity={0.1} wireframe/> */}
         
         {/* <meshStandardMaterial displacementMap={texture} side={DoubleSide}
           key={DisplaceMaterial.key}
