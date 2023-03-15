@@ -273,3 +273,6 @@ html {
 .pointer-none-children-strict *{
   pointer-events: none !important;
 }
+.pointer-events-strict{
+  pointer-events: auto !important;
+}

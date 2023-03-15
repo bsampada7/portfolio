@@ -1,9 +1,11 @@
-import { Point, PointMaterial, Points, shaderMaterial, useTrailTexture } from "@react-three/drei";
+import { Mask, Point, PointMaterial, Points, shaderMaterial, useMask, useScroll, useTrailTexture } from "@react-three/drei";
 import { useControls } from "leva";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { DoubleSide, MathUtils, Color, ShaderMaterial } from "three";
 import * as easings from 'd3-ease'
-import { extend, ReactThreeFiber } from "@react-three/fiber";
+import { extend, ReactThreeFiber, useFrame, useThree } from "@react-three/fiber";
+import * as THREE from 'three'
+
 
 
 const config1 = {
@@ -18,7 +20,7 @@ const config1 = {
   ease: (x: number) => Math.sqrt(1 - Math.pow(x - 1, 2))
 }
 
-const disp = {amount: 0.05}
+const disp = { amount: 0.05 }
 
 // secondary: "#e000ff",
 // primary: "#8401ff",
@@ -68,7 +70,7 @@ const positions = Array.from({ length: 500 }, (i) => [
   MathUtils.randFloat(-15, -10),
 ])
 
-const Wireframe = () => {
+const Wireframe = (props: any) => {
   // const { blend, ...config } = useControls('Trail', {
   //   size: { value: 64, min: 8, max: 256, step: 8 },
   //   radius: { value: 0.3, min: 0, max: 1 },
@@ -89,15 +91,32 @@ const Wireframe = () => {
   // const blend1 = blend as CanvasRenderingContext2D['globalCompositeOperation']
   // const [texture, onMove] = useTrailTexture({ ...config, blend: blend1 })
   const [texture, onMove] = useTrailTexture(config1)
+  const { width, height } = useThree((state) => state.viewport)
+  const stencil = useMask(1)
+  const ref = useRef<any>(null)
+  const scroll = useScroll()
+  const numberofPages = 5;
 
+  useFrame((state, delta) => {
+    if (!(ref?.current)) return
+    // ref.current.position.y = THREE.MathUtils.damp(ref.current.position.y, visible.current ? 0 : -height / 2 + 1, 4, delta)
+    // const r1 = scroll.range(2/numberofPages, 3 / numberofPages)
+    const r2 = scroll.range(3 / numberofPages, 4 / numberofPages)
+    ref.current.position.y = THREE.MathUtils.damp(ref.current.position.y, -1.2 * height * r2 , 4, delta)
+  })
 
   return (
     <>
-      <mesh onPointerMove={onMove} scale={[40,40,20]} position={[0, 0, -1]} rotation={[0,0,0.8]}>
-        <planeGeometry args={[1, 1, 128, 128]} />
-        <displaceMaterial key={DisplaceMaterial.key} map={texture} side={DoubleSide} {...disp} opacity={0.1} wireframe/>
+      <Mask id={1} position={[0, -0 * height, -1]}>
+        <planeGeometry args={[1.2 * width, 1.2 * height, 1, 1]} />
+      </Mask>
+      <mesh onPointerMove={onMove} scale={[1, 1, 1]} position={[0, -0 * height, -1]} rotation={[0, 0, 0.8]} {...props} ref={ref}>
+        <planeGeometry args={[20, 20, 64, 64]} />
+        <displaceMaterial key={DisplaceMaterial.key} map={texture} side={DoubleSide} {...disp} opacity={0.1} wireframe {...stencil}>
+          {/* <plane attach="clippingPlanes-0" normal={[0, -1, 0]} constant={0} />   */}
+        </displaceMaterial>
         {/* <displaceMaterial key={DisplaceMaterial.key} map={texture} side={DoubleSide} {...disp} opacity={0.1} wireframe/> */}
-        
+
         {/* <meshStandardMaterial displacementMap={texture} side={DoubleSide}
           key={DisplaceMaterial.key}
           // color={'#FF0000'}

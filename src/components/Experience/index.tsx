@@ -5,11 +5,11 @@ import Wireframe from "../Wireframe";
 const Experience = () => {
   return (
     <div className="flex flex-col w-full h-full gap-4  bg-[lavenderblush] relative">
-      <div className="w-full h-full absolute opacity-50">
+      {/* <div className="w-full h-full absolute opacity-50">
         <Canvas >
           <Wireframe />
         </Canvas>
-      </div>
+      </div> */}
       <div className="absolute flex flex-col w-full h-full p-10 pt-32 pointer-events-none">
         <div className="text-3xl font-bold text-primary">
           <span>Experience</span>

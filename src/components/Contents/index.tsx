@@ -14,9 +14,7 @@ const Contents = () => {
       {/* <section id='Education' className="education bg-gray-light w-full max-w-[92rem] h-[100vh] flex flex-col items-center justify-center">
         <Education />
       </section> */}
-      <section id='Experience' className="experience bg-gray-light w-full max-w-[92rem] h-[100vh] flex items-center justify-center">
-        <Experience />
-      </section>
+      
       <section id='Projects' className="projects bg-gray-light w-full max-w-[92rem] h-[100vh] flex items-center justify-center overflow-auto">
         <Projects />
       </section>

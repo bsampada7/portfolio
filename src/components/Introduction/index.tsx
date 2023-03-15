@@ -17,7 +17,7 @@ const Introduction = () => {
 
       <div className="absolute left-10 top-96 z-10">
         <Link href={"#Contact"} className="pointer-events-auto">
-          <PrimaryButton text={"Get in touch"} className={"mt-8 ml-0 pointer-events-auto cursor-pointer"} />
+          <PrimaryButton text={"Get in touch"} className={"mt-8 ml-0 pointer-events-auto pointer-events-strict cursor-pointer"} />
         </Link>
 
       </div>
