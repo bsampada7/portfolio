@@ -1,18 +1,15 @@
+import useScrollData from "@/utils/hooks/useScrollData";
 import { useScroll } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
+import { useEffect } from "react";
 
 const Experience = () => {
-  const scroll = useScroll()
-  useFrame((state, delta) => {
-    const r1 = scroll.range(0, 1)
-    const calc = Math.max((r1 / 0.25) - 2, 0)
-    
-  })
+  const [scrollPosition, _] = useScrollData(2)
 
   return (
     <div className="timeline flex flex-col w-full h-full gap-4 relative">
       <ul>
-        <li className="in-view">
+        <li className={scrollPosition > 0.2 ? "in-view" : ''}>
           <div>
             <time>2018</time>
             <div className="discovery">
@@ -28,13 +25,9 @@ const Experience = () => {
                 HTML, CSS, JavaScript, CodeIgniter
               </p>
             </div>
-            {/* <div className="scientist">
-              <h1>Scientist</h1>
-              <span>Newton</span>
-            </div> */}
           </div>
         </li>
-        <li className="in-view">
+        <li className={scrollPosition > 0.45 ? "in-view" : ''}>
           <div>
             <time>2019-2022</time>
             <div className="discovery">
@@ -48,7 +41,7 @@ const Experience = () => {
             </div>
           </div>
         </li>
-        <li className="in-view">
+        <li className={scrollPosition > 0.7 ? "in-view" : ''}>
           <div>
             <time>2022-Present</time>
             <div className="discovery">
@@ -62,7 +55,7 @@ const Experience = () => {
             </div>
           </div>
         </li>
-        <li className="in-view">
+        <li className={scrollPosition > 0.9 ? "in-view" : ''}>
           <div>
             <time>2023(Summer)</time>
             <div className="discovery">
