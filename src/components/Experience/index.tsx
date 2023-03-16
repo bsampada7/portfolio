@@ -1,49 +1,79 @@
-import { Canvas } from "@react-three/fiber";
-import React from "react";
-import Wireframe from "../Wireframe";
+import { useScroll } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
 
 const Experience = () => {
+  const scroll = useScroll()
+  useFrame((state, delta) => {
+    const r1 = scroll.range(0, 1)
+    const calc = Math.max((r1 / 0.25) - 2, 0)
+    
+  })
+
   return (
-    <div className="flex flex-col w-full h-full gap-4  bg-[lavenderblush] relative">
-      {/* <div className="w-full h-full absolute opacity-50">
-        <Canvas >
-          <Wireframe />
-        </Canvas>
-      </div> */}
-      <div className="absolute flex flex-col w-full h-full p-10 pt-32 pointer-events-none">
-        <div className="text-3xl font-bold text-primary">
-          <span>Experience</span>
-        </div>
-        <div className="w-full h-1/2 relative overflow-hidden">
-          <div className="flex flex-col text-primary-light text-3xl mt-4">
-            <span>Software Engineer</span>
-            <span>Alternative Technology</span>
-            <span>Technology: React.js, Three.js, JavaScript, TypeScript, Python, CSS. HTML</span>
-            <span className="font-bold">2019 - 2022</span>
+    <div className="timeline flex flex-col w-full h-full gap-4 relative">
+      <ul>
+        <li className="in-view">
+          <div>
+            <time>2018</time>
+            <div className="discovery">
+              <h1 className="text-primary">LIS Nepal Pvt. Ltd.</h1>
+              <span className="flex flex-row gap-2">
+                <img src="icons/location-filled.svg" className="w-6 h-6 inline-block"></img>
+                <span>Kathmandu, Nepal</span>
+              </span>
+              <p>
+                Software Engineering Intern
+              </p>
+              <p>
+                HTML, CSS, JavaScript, CodeIgniter
+              </p>
+            </div>
+            {/* <div className="scientist">
+              <h1>Scientist</h1>
+              <span>Newton</span>
+            </div> */}
           </div>
-
-        </div>
-        <div className="w-full h-1/2">
-          <div className="flex flex-col text-primary-light text-3xl mt-4 items-end">
-            <span>Full Stack Developer | Graduate Assistant</span>
-            <span>Myaamia Center, Miami University</span>
-            <span>Technology: Laravel, JavaScript, Android, Swift</span>
-            <span className="font-bold">2022 - 2024</span>
+        </li>
+        <li className="in-view">
+          <div>
+            <time>2019-2022</time>
+            <div className="discovery">
+              <h1 className="text-primary">Alternative Technology</h1>
+              <p>
+                Software Engineer
+              </p>
+              <p>
+                React.js, Three.js, Typescript, Javascript, SCSS
+              </p>
+            </div>
           </div>
-        </div>
-      </div>
-
-
-
-      {/* <div>
-      Myaamia work with Myaamia tribal background animation
-    </div>
-    <div>
-      Alternative Technology with rug background, people, love, learning, rooms animation,
-    </div>
-    <div>
-      LIS Nepal, Intern, Mentored background
-    </div> */}
+        </li>
+        <li className="in-view">
+          <div>
+            <time>2022-Present</time>
+            <div className="discovery">
+              <h1 className="text-primary">Myaamia Center, Miami university</h1>
+              <p>
+                Full Stack Developer
+              </p>
+              <p>
+                Laravel, Javascript, Android Development, Swift
+              </p>
+            </div>
+          </div>
+        </li>
+        <li className="in-view">
+          <div>
+            <time>2023(Summer)</time>
+            <div className="discovery">
+              <h1 className="text-primary">Summer Internship</h1>
+              <p>
+                Looking for a challeging and growing internship experience
+              </p>
+            </div>
+          </div>
+        </li>
+      </ul>
     </div>
   );
 };
