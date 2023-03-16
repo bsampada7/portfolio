@@ -2,7 +2,6 @@ import { useScroll } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import { useState } from 'react';
 
-
 export const numberofPages = 6
 
 export default function useScrollData(page: number) {

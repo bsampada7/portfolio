@@ -20,6 +20,7 @@ export enum ScrollPage {
 export const initialState: stateType = {
   menuOpen: false,
   scrollPage: ScrollPage.Introduction,
+  canvasClass:''
 };
 
 const MyStoreReducer = (state: stateType, action: actionType) => {

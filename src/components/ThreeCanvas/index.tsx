@@ -7,11 +7,15 @@ import EnvSettings from "./EnvSettings";
 import Education from "../Education";
 import Experience from "../Experience";
 import Projects from "../Projects";
+import { useContext } from "react";
+import { MyStoreContext } from "@/store/mystore";
 
 const ThreeCanvas = () => {
+  const { state, _ } = useContext(MyStoreContext);
+
   return (
     <div className="absolute w-full mx-auto h-[100vh] top-0 left-0">
-      <Canvas>
+      <Canvas className={state.canvasClass}>
         <EnvSettings />
         <ScrollControls pages={numberofPages} >
           <Cover />

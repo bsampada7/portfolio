@@ -1,7 +1,8 @@
+import { MyStoreContext } from "@/store/mystore";
 import useScrollData from "@/utils/hooks/useScrollData";
-import { Mask, Point, shaderMaterial, useMask, useScroll, useTrailTexture } from "@react-three/drei";
-import { extend, useFrame, useThree } from "@react-three/fiber";
-import { useEffect, useRef, useState } from "react";
+import { Mask, shaderMaterial, useMask, useTrailTexture } from "@react-three/drei";
+import { extend, useThree } from "@react-three/fiber";
+import { useContext, useEffect, useRef } from "react";
 import * as THREE from 'three';
 import { Color, DoubleSide } from "three";
 
@@ -61,6 +62,7 @@ const disp = { amount: 0.27 }
 const Wireframe = (props: any) => {
   const [texture, onMove] = useTrailTexture(config)
   const { width, height } = useThree((state) => state.viewport)
+  const { state, dispatch } = useContext(MyStoreContext);
   const stencil = useMask(1)
   const ref = useRef<any>(null)
   const refmask = useRef<any>(null)
@@ -71,7 +73,21 @@ const Wireframe = (props: any) => {
     if (!(ref?.current)) return
     ref.current.position.y = THREE.MathUtils.lerp(-1.2 * height, 0, scrollPosition)
     refmask.current.position.y = ref.current.position.y
+    if (scrollPosition > 0 && state.canvasClass === "") {
+      dispatch({
+        type: 'Post',
+        payload: { canvasClass: 'zIndexZero' }
+      })
+    }
+    else if (scrollPosition <= 0 && state.canvasClass !== "") {
+      dispatch({
+        type: 'Post',
+        payload: { canvasClass: '' }
+      })
+    }
   }, [scrollPosition]);
+
+
 
   return (
     <>

@@ -396,7 +396,7 @@ html {
   }
 }
 
-canvas {
+.zIndexZero > div > canvas {
   z-index: 0 !important;
   background: transparent;
 }
