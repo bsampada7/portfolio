@@ -1,25 +1,36 @@
-import { MyStoreContext } from "@/store/mystore";
-import { Environment, ScrollControls } from "@react-three/drei";
+import { numberofPages } from "@/utils/hooks/useScrollData";
+import { Scroll, ScrollControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import React, { Suspense, useContext } from "react";
-import { Model } from "../Model";
+import Contact from "../Contact";
+import { Cover } from "../Cover";
+import EnvSettings from "./EnvSettings";
+import Education from "../Education";
+import Experience from "../Experience";
+import Projects from "../Projects";
 
 const ThreeCanvas = () => {
-
-
   return (
     <div className="absolute w-full mx-auto h-[100vh] top-0 left-0">
-      {/* <Canvas shadows className="bg-[lavenderblush]">
-        <Suspense fallback={null}>
-          <ScrollControls pages={1}>
-            <Model />
-          </ScrollControls>
-        </Suspense>
-        <fog attach="fog" args={['lightpink', 60, 100]} />
-      </Canvas> */}
-      <Model />
-      {/* <Environment preset="forest" /> */}
-
+      <Canvas>
+        <EnvSettings />
+        <ScrollControls pages={numberofPages} >
+          <Cover />
+          <Scroll html>
+            <section id='Education' className="absolute w-[100vw] top-[200vh] education bg-gray-light max-w-[92rem] h-[100vh] flex items-center justify-center">
+              <Education />
+            </section>
+            <section id='Experience' className="absolute w-[100vw] top-[300vh] experience bg-transparent max-w-[92rem] h-[100vh] flex items-center justify-center">
+              <Experience />
+            </section>
+            <section id='Projects' className="absolute w-[100vw] top-[400vh] projects bg-gray-light max-w-[92rem] h-[100vh] flex items-center justify-center overflow-auto">
+              <Projects />
+            </section>
+            <section id='Contact' className="absolute w-[100vw] top-[500vh] contact bg-gray-light max-w-[92rem] h-[100vh] flex items-center justify-center">
+              <Contact />
+            </section>
+          </Scroll>
+        </ScrollControls>
+      </Canvas>
     </div>
   );
 };
