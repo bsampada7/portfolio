@@ -4,7 +4,6 @@ import Overlay from '@/components/Overlay'
 import ThreeCanvas from '@/components/ThreeCanvas'
 import { MyStoreContext } from '@/store/mystore'
 import Head from 'next/head'
-import Script from 'next/script'
 import { useContext } from 'react'
 
 export default function Home() {
@@ -22,12 +21,7 @@ export default function Home() {
         <ThreeCanvas />
         <MenuContainer />
         <Overlay />
-        <section id='Contact' className="absolute w-[100vw] top-[100vh] contact bg-gray-light max-w-[92rem] h-[100vh] flex items-center justify-center">
-          <Contact />
-        </section>
-        {/* <div className='w-[100vw] h-[100vh]'></div>
-        <Contact /> */}
-
+        <Contact />
       </main>
     </>
   )

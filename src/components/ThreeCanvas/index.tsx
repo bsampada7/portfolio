@@ -1,42 +1,22 @@
+import { MyStoreContext } from "@/store/mystore";
 import { numberofPages } from "@/utils/hooks/useScrollData";
 import { Scroll, ScrollControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import Contact from "../Contact";
+import { useContext } from "react";
 import { Cover } from "../Cover";
-import EnvSettings from "./EnvSettings";
 import Education from "../Education";
 import Experience from "../Experience";
 import Projects from "../Projects";
-import { useContext, useEffect, useState } from "react";
-import { MyStoreContext } from "@/store/mystore";
+import EnvSettings from "./EnvSettings";
 
 const ThreeCanvas = () => {
   const { state, _ } = useContext(MyStoreContext);
-  const [disableScroll, setdisableScroll] = useState(false);
-
-
-  const handleScroll = () => {
-    console.log(window.scrollY);
-
-    if (window.scrollY === 0) {
-      setdisableScroll(false)
-    } else {
-      setdisableScroll(true)
-    }
-  }
-
-  useEffect(() => {
-    console.log("enabled ", !disableScroll)
-  }, [disableScroll]);
-  
-
-
 
   return (
-    <div className={`absolute w-full mx-auto h-[100vh] top-0 left-0 `} onMouseOver={handleScroll}>
+    <div className={`absolute w-full mx-auto h-[100vh] top-0 left-0 `}>
       <Canvas className={state.canvasClass}>
         <EnvSettings />
-        <ScrollControls pages={numberofPages} enabled={!disableScroll}>
+        <ScrollControls pages={numberofPages}>
           <Cover />
           <Scroll html>
             <section id='Education' className="absolute w-[100vw] top-[200vh] education bg-gray-light max-w-[92rem] h-[100vh] flex items-center justify-center">
@@ -48,9 +28,9 @@ const ThreeCanvas = () => {
             <section id='Projects' className="absolute w-[100vw] top-[400vh] projects bg-gray-light max-w-[92rem] h-[100vh] flex items-center justify-center overflow-auto">
               <Projects />
             </section>
-            {/* <section id='Contact' className="absolute w-[100vw] top-[500vh] contact bg-gray-light max-w-[92rem] h-[100vh] flex items-center justify-center">
-              <Contact />
-            </section> */}
+            <section id='Contact' className="absolute w-[100vw] top-[500vh] contact bg-gray-light max-w-[92rem] h-[100vh] flex items-center justify-center">
+              {/* <Contact /> // will be rendered inside this div using javascript*/} 
+            </section>
           </Scroll>
         </ScrollControls>
       </Canvas>

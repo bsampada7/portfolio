@@ -400,3 +400,10 @@ html {
   z-index: 0 !important;
   background: transparent;
 }
+
+#contact-contents {
+  display: none;
+}
+#Contact > #contact-contents {
+  display: block;
+}

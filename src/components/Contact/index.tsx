@@ -1,11 +1,27 @@
 import { socialLinks } from "@/constants";
 import Script from "next/script";
-import React from "react";
+import { useEffect } from "react";
 import ContactForm from "./ContactForm";
 
+let interval: NodeJS.Timer
+
 const Contact = () => {
+
+  useEffect(() => {
+    interval = setInterval(() => {
+      const contactContents = document.getElementById('contact-contents')
+      if (contactContents) {
+        clearInterval(interval)
+        document.getElementById('Contact')?.appendChild(contactContents)
+      }
+    }, 2000);
+    return (() => {
+      clearInterval(interval)
+    })
+  }, []);
+
   return (
-    <div className="flex flex-col w-full h-full gap-4 pb-10 pt-32 bg-gray-dark relative p-10">
+    <div id="contact-contents" className="flex flex-col w-full h-full gap-4 pb-10 pt-32 bg-gray-dark relative p-10">
       <div className="text-3xl font-bold text-primary mb-4">
         <span>Contact Me</span>
       </div>
@@ -26,7 +42,7 @@ const Contact = () => {
               }
             </>
           </div>
-          <hr className="text-neutral-300 opacity-50 w-80 mx-auto my-4"/>
+          <hr className="text-neutral-300 opacity-50 w-80 mx-auto my-4" />
           <div className="text-neutral-100 text-center">Follow my <span className="text-primary">#100DaysOfCode</span> journey on twitter</div>
           {/* <blockquote className="twitter-tweet">
             <p lang="en" dir="ltr">
