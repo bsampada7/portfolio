@@ -7,6 +7,8 @@ export const numberofPages = 6
 export default function useScrollData(page: number) {
   const [scrollData, setScrollData] = useState([0, 0]);
 
+  console.log("current scroll data", scrollData)
+
   const scroll = useScroll()
   const numberofPagesFrac = 1 / (numberofPages - 1)
   useFrame((state, delta) => {
