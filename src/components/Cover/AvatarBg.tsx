@@ -17,7 +17,7 @@ export default function AvatarBg() {
 
   useEffect(() => {
     setpositionX(THREE.MathUtils.damp(positionX, (8 * scrollPosition1), 4, delta1))
-    setpositionY(THREE.MathUtils.damp(positionY, 2.5 * height * scrollPosition2 + 0.5 * scrollPosition2 - 0.5, 4, delta2))
+    setpositionY(THREE.MathUtils.lerp(-0.5, 2.5 * height, scrollPosition2))
     setscale(THREE.MathUtils.damp(scale, (-0.1 * scrollPosition1 + 1.1), 4, delta1))
   }, [scrollPosition1, scrollPosition2]);
 
