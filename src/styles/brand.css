@@ -1,11 +1,10 @@
 
-.word {
-	font-family: 'Anton', sans-serif;
+#brand {
+	font-weight: 600;
 	perspective: 1000px; 
-	color: #8401ff
 }
 
-.word span {
+#brand span {
 	cursor: pointer;
 	display: inline-block;
 	font-size: 30px;
@@ -13,7 +12,7 @@
 	line-height: .8;
 }
 
-.word span:nth-child(1).active {
+#brand span:nth-child(1).active {
 	animation: balance 1.5s ease-out;
 	transform-origin: bottom left;
 }
@@ -28,7 +27,7 @@
 	}
 }
 
-.word span:nth-child(2).active {
+#brand span:nth-child(2).active {
 	animation: shrinkjump 1s ease-in-out;
 	transform-origin: bottom center;
 }
@@ -47,7 +46,7 @@
 	}
 }
 
-.word span:nth-child(3).active {
+#brand span:nth-child(3).active {
 	animation: falling 2s ease-out;
 	transform-origin: bottom center;
 }
@@ -78,7 +77,7 @@
 	}
 }
 
-.word span:nth-child(4).active {
+#brand span:nth-child(4).active {
 	animation: rotate 1s ease-out;
 }
 
@@ -92,7 +91,7 @@
 	}
 }
 
-.word span:nth-child(5).active {
+#brand span:nth-child(5).active {
 	animation: toplong 1.5s linear;
 }
 
@@ -106,13 +105,13 @@
 	}
 }
 
-.word span:nth-child(6).active {
+#brand span:nth-child(6).active {
 	animation: falling 2s ease-out;
 	transform-origin: bottom center;
 }
 
 
-.word span:nth-child(7).active {
+#brand span:nth-child(7).active {
 	animation: shrinkjump 1s ease-in-out;
 	transform-origin: bottom center;
 }

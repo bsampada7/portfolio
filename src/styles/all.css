@@ -1,33 +1,4 @@
-html {
-  scroll-behavior: smooth;
-  overflow: scroll;
-  overflow-x: hidden;
-}
-::-webkit-scrollbar {
-  width: 0; /* Remove scrollbar space */
-  background: transparent; /* Optional: just make scrollbar invisible */
-}
-/* Optional: show position indicator in red */
-::-webkit-scrollbar-thumb {
-  /* background: #ff0000; */
-}
 
-/* for menu drawer */
-.menu-drawer {
-  transition: right 0.8s cubic-bezier(0.61, 1, 0.88, 1);
-}
-
-.languages {
-  transform: matrix(1, 0, 0, 1, 0, 0);
-  opacity: 1;
-
-  transition: transform 1s cubic-bezier(0.61, 1, 0.88, 1),
-    opacity 1s cubic-bezier(0.61, 1, 0.88, 1);
-}
-
-.slideleft {
-  transform: matrix(1, 0, 0, 1, -300, 0);
-}
 
 .introduction.show,
 .skills.show {
@@ -83,9 +54,6 @@ html {
 .side-a {
   background-color: rgba(236, 0, 140, 0.6);
 }
-/* .bar-75 .growing-bar {
-  width: 75%;
-} */
 .growing-bar {
   transition: all 0.3s ease-in-out;
   background-color: rgba(236, 0, 140, 0.6);
@@ -192,37 +160,13 @@ html {
   height: 91.666667%;
 }
 
-/* .book{
-  width: 300px;
-  padding-bottom: 150%;
-} */
 
-.book,
-.book-cover {
-  width: 50vw;
-  height: 75vw;
-}
-
-@media (min-width: 900px) {
-  .book,
-  .book-cover {
-    width: 40vw;
-    height: min(60vw, 90vh);
-  }
-}
-
-.circuit-svg {
-  /* margin-top: 7rem; */
-  position: absolute;
-  opacity: 0.5;
-}
-
-.path {
+.animation-draw {
   animation: draw 14s infinite;
   animation-timing-function: linear;
 }
 
-.path-2 {
+.animation-draw-2 {
   animation: draw 14s infinite;
   animation-delay: 1s;
   animation-timing-function: linear;
@@ -237,32 +181,13 @@ html {
   }
 }
 
-.text-silver {
-  color: silver;
-}
-.plane-image {
-  transform: rotateY(180deg) rotateZ(40deg);
-}
-
-.plane-image {
-  offset-path: path("M27,15 C211,2 404,106 483,245");
-  animation: move 3000ms forwards ease-in-out;
-}
-
 .card {
-  /* display: flex; */
-  /* justify-content: center; */
-  /* align-items: center; */
-  /* height: 300px; */
-  /* width: 250px; */
-  /* background: linear-gradient(#f9bc61, #fde8c9); */
   box-shadow: 0px 6px 6px -3px rgba(0, 0, 0, 0.2),
     0px 10px 14px 1px rgba(0, 0, 0, 0.14), 0px 4px 18px 3px rgba(0, 0, 0, 0.12);
-  /* border-radius: 8px; */
   transition: transform 0.5s ease-in-out;
 }
 
-.card-container {
+.transition-transform-hor {
   transform: translateX(0);
   transition: transform 0.5s ease-in-out;
 }
