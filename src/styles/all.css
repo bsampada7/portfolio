@@ -1,5 +1,3 @@
-
-
 .introduction.show,
 .skills.show {
   transform: matrix(1, 0, 0, 1, 0, 0);
@@ -160,7 +158,6 @@
   height: 91.666667%;
 }
 
-
 .animation-draw {
   animation: draw 14s infinite;
   animation-timing-function: linear;
@@ -201,6 +198,9 @@
 .pointer-events-strict {
   pointer-events: auto !important;
 }
+.pointer-events-strict *{
+  pointer-events: auto !important;
+}
 
 /********************************************/
 
@@ -209,11 +209,12 @@
   position: relative;
   width: 6px;
   margin: 0 auto;
-  padding-top: 50px;
-  background: #fff;
+  padding-top: 25px;
+  /* background: #fff; */
+  background-color: hsla(0, 0%, 22%,0.4);
 }
 .timeline ul li:last-child {
-  padding-bottom: 30px;
+  padding-bottom: 20px;
 }
 .timeline ul li::after {
   content: "";
@@ -224,7 +225,9 @@
   width: 20px;
   height: 20px;
   z-index: 2;
-  background: #eee;
+  /* background: #eee; */
+  background-color: hsla(0, 0%, 22%, 0.4);
+
 }
 .timeline ul li:last-child::after {
   bottom: 30px;
@@ -234,16 +237,21 @@
   bottom: 0;
   width: 400px;
   padding: 20px;
-  background: #fff;
-  box-shadow: 4px 13px 30px 1px rgba(252, 56, 56, 0.2);
+  /* background: #fff; */
+  background-color: hsla(0, 0%, 22%, 0.4);
+  /* background-color: hsla(0, 5%, 15%, 1); */
+  /* box-shadow: 4px 13px 30px 1px rgba(252, 56, 56, 0.2); */
   border-radius: 5px;
   display: flex;
   align-items: center;
 }
+.discovery{
+  background-color: transparent !important;
+}
 .timeline ul li div time {
   position: absolute;
-  background: #f5af19;
-  color: white;
+  background: #4717F1;
+  color: #F5E2C8;
   width: auto;
   padding-left: 4px;
   padding-right: 4px;
@@ -307,9 +315,6 @@
 }
 
 @media screen and (max-width: 600px) {
-  body {
-    background: #8bfff4;
-  }
   .timeline ul li {
     margin-left: 20px;
   }
@@ -331,4 +336,113 @@
 }
 #Contact > #contact-contents {
   display: block;
+}
+
+
+.chatbox-container {
+  width: 100%;
+  height: calc(100% - 64px);
+  position: relative;
+  overflow: hidden;
+  transition: height 0.5s ease-in-out;
+}
+.chatbox-container.expand {
+  height: 100%;
+}
+#chatbox {
+  transition: top 0.5s ease-in-out;
+}
+.msg-input {
+  background-color: hsla(0, 0%, 22%, 0.4);
+}
+.chat-bubble-typing {
+  -webkit-border-radius: 20px;
+  -webkit-border-bottom-right-radius: 2px;
+  -moz-border-radius: 20px;
+  -moz-border-radius-bottomright: 2px;
+  border-radius: 20px;
+  border-bottom-right-radius: 2px;
+  background-color: hsla(0, 0%, 22%, 0.4);
+  transform: translate(0%, calc(100% + 16px));
+  opacity: 0;
+  transition: transform 0.4s ease-in-out, opacity 0.1s 0.2s ease-in-out;
+}
+.chat-bubble-typing.show {
+  transform: translate(0, 0);
+  opacity: 1;
+}
+.chat-bubble {
+  -webkit-border-radius: 20px;
+  -webkit-border-bottom-right-radius: 2px;
+  -moz-border-radius: 20px;
+  -moz-border-radius-bottomright: 2px;
+  border-radius: 20px;
+  border-bottom-right-radius: 2px;
+  background-color: hsla(0, 0%, 22%, 0.4);
+  transform: translateX(25%);
+  transition: transform 0.4s ease-in-out, top 0.4s ease-in-out,
+    margin 0.4s ease-in-out;
+  max-width: 75%;
+}
+.chat-bubble.user {
+  -webkit-border-radius: 20px;
+  -webkit-border-bottom-left-radius: 2px;
+  -moz-border-radius: 20px;
+  -moz-border-radius-leftright: 2px;
+  border-radius: 20px;
+  border-bottom-left-radius: 2px;
+  align-self: start;
+}
+
+.chat-bubble.show {
+  transform: translateX(0);
+}
+
+.typing .dot {
+  animation: mercuryTypingAnimation 1.8s infinite ease-in-out;
+}
+.typing .dot:nth-child(1) {
+  animation-delay: 200ms;
+}
+.typing .dot:nth-child(2) {
+  animation-delay: 300ms;
+}
+.typing .dot:nth-child(3) {
+  animation-delay: 400ms;
+}
+.typing .dot:last-child {
+  margin-right: 0;
+}
+
+@keyframes mercuryTypingAnimation {
+  0% {
+    transform: translateY(0px);
+    /* background-color: #6cad96; */
+  }
+  28% {
+    transform: translateY(-7px);
+    /* background-color: #9ecab9; */
+  }
+  44% {
+    transform: translateY(0px);
+    /* background-color: #b5d9cb; */
+  }
+}
+
+.left-triangle {
+  clip-path: polygon(100% 0, 0 0, 0 100%);
+
+}
+.right-triangle {
+  clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+}
+
+.card .media{
+  box-shadow: 0 0 100px rgba(0,0,0,0.9) inset;
+}
+.card .media:hover{
+  box-shadow: none;
+}
+.contact-from-wrapper{
+  min-width: min(400px, 80%);
 }

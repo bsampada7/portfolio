@@ -28,12 +28,12 @@ const Projects = () => {
 
 
   return (
-    <div className="flex flex-col w-full h-full gap-4 pb-10 pt-32 bg-gray-dark relative">
-      <div className="text-3xl font-bold px-10 text-primary">
+    <div className="flex flex-col w-full h-full gap-4 pb-10 pt-10 bg-background1 relative">
+      <div className="text-3xl font-bold mx-auto my-10 text-primary">
         <span>Projects</span>
       </div>
       <div className="w-full flex-grow flex overflow-auto px-8 pointer-events-none" >
-        <div className="flex gap-8 flex-grow items-center justify-center card-container" ref={containerRef}>
+        <div className="flex gap-8 flex-grow items-center justify-center transition-transform-hor" ref={containerRef}>
           <Card
             name={"Beyond Dreams"}
             imgclass={"bg-[url('/images/beyonddreams.png')]"}
@@ -107,34 +107,13 @@ const Projects = () => {
         </div>
       </div>
       <div className="flex justify-center gap-8">
-        <button className="w-12 h-12 rounded-2xl p-2 pl-1.5 bg-violet-600 hover:bg-violet-700" onClick={() => onButtonClick('left')}>
+        <button className="w-12 h-12 rounded-2xl p-2 pl-1.5 bg-primary hover:bg-primary-dark" onClick={() => onButtonClick('left')}>
           <img src="icons/left.svg"></img>
         </button>
-        <button className="w-12 h-12 rounded-2xl p-2 pr-1.5 bg-violet-600 hover:bg-violet-700" onClick={() => onButtonClick('right')}>
+        <button className="w-12 h-12 rounded-2xl p-2 pr-1.5 bg-primary hover:bg-primary-dark" onClick={() => onButtonClick('right')}>
           <img src="icons/right.svg"></img>
         </button>
       </div>
-
-
-
-      {/* <div>
-        Room Tool V2
-      </div>
-      <div>
-        Virtual Rug Studio
-      </div>
-      <div>
-        Beyond dreams page 13 Showcase
-      </div>
-      <div>
-        Room View Showcase, maybe beyonddreams room with the moving water
-      </div>
-      <div>
-        One barrister
-      </div>
-      <div>
-        ILDA
-      </div> */}
 
     </div >
   );

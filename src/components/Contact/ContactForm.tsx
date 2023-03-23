@@ -68,7 +68,7 @@ export default function ContactForm() {
   }
 
   return (
-    <div className='w-full max-w-lg bg-[#f7f9f9] p-8 rounded-2xl'>
+    <div className='w-full h-full max-w-lg bg-[#141414] p-8 rounded-2xl mt-10 contact-from-wrapper'>
       <form onSubmit={handleSubmit(onSubmit)} onChange={onFormChange} className="flex flex-col gap-4 text-left mt-4 ">
         <>
           <Input
@@ -85,15 +85,15 @@ export default function ContactForm() {
             placeholder="Your email address"
             register={register}
             error={errors.email?.message} />
-            <input type="text" name="_honey" className='hidden'></input>
+          <input type="text" name="_honey" className='hidden'></input>
           <div className="flex flex-col">
-            <label className={`text-base text-neutral-700 mb-2`}>Your message</label>
+            <label className={`text-base text-text-muted mb-2`}>Your message</label>
 
             <textarea
               {...register("message")}
               rows={4}
               placeholder={"Your message"}
-              className='text-neutral-700 text-base mb-2 p-2 border border-gray outline-primary-light'
+              className='bg-background2 rounded-lg text-text-muted text-base mb-2 p-2 border border-transparent focus-within:border-gray outline-none'
             />
             {errors.message?.message
               && (typeof errors.message?.message === 'string')

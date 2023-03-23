@@ -9,7 +9,7 @@ const PrimaryButton = ({ text, className, onClick, submit }:
     }
   }
   return <button
-    className={"btn bg-primary text-white w-fit py-3 px-4 rounded-lg cursor-pointer hover:bg-primary-dark m-2 "
+    className={"btn w-fit py-3 px-4 rounded-lg cursor-pointer m-2 bg-primary "
       + className}
     onClick={handleOnClick}
     type={submit ? "submit" : "button"}

@@ -15,7 +15,7 @@ const MenuContainer = () => {
 
 
   return (
-    <div className={`menu-drawer fixed w-96 h-full top-0 ${menuOpen ? 'right-0' : '-right-96'} bg-white 
+    <div className={`menu-drawer pl-4 fixed w-96 h-full top-0 ${menuOpen ? 'right-0' : '-right-96'} bg-white 
                       flex text-primary font-semibold`}>
 
 

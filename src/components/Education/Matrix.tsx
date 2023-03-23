@@ -75,7 +75,7 @@ const Matrix = () => {
     // else
     setTimeout(() => {
       window.requestAnimationFrame(draw);
-    }, 100);
+    }, 200);
   }
 
   const callbackFn = (entries: IntersectionObserverEntry[]) => {
@@ -115,7 +115,7 @@ const Matrix = () => {
 
   return (
     <div>
-      <canvas width={200} height={150} className="absolute w-6/12 h-7/12 top-[40%] left-0 filter blur-sm h-full" ref={canvasRef}>
+      <canvas width={400} height={300} className="absolute w-full  left-0 filter blur-sm h-full" ref={canvasRef}>
 
       </canvas>
 

@@ -5,13 +5,13 @@ export default function Input({ type, label, name, placeholder, register, error,
 
   return (
     <div className="flex flex-col mb-4">
-      <label className={`text-neutral-700 text-base mb-2`}>{label}</label>
+      <label className={`text-text-muted text-base mb-2`}>{label}</label>
       <input
         type={type ?? "text"}
         {...register(name)}
         placeholder={placeholder}
         className={
-          `p-2 border bg-white text-neutral-700 border-gray outline-primary-light rounded-md
+          `p-2 border bg-background2 text-text-muted border-transparent focus-visible:border-gray outline-none rounded-md
           ${error ? "border-danger outline-0 focus-visible:rounded-md" : ''} 
           ${className || ''}`
         }

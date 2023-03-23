@@ -3,8 +3,8 @@ import React from "react";
 const CircuitBoard = () => {
   return (
     <>
-      <svg viewBox="0 0 800 800" version="1.1" className="circuit-svg">
-        <g id="paths" className="path" stroke="#8401ff" strokeWidth="2"
+      <svg viewBox="0 0 800 800" version="1.1" className="absolute top-[40%]  opacity-50">
+        <g id="paths" className="animation-draw" stroke="#8401ff" strokeWidth="2"
           transform="translate(0.000000, -400.000000)"
           fillRule="evenodd" strokeLinecap="round" strokeLinejoin="round" fill="none" strokeOpacity="1" strokeDasharray="30,150" strokeDashoffset="2000">
           <g id="left" transform="translate(461.000000, 416.000000)">
@@ -22,7 +22,7 @@ const CircuitBoard = () => {
             <polyline points="48 56 48 48 44 44 44 23 32 11 32 0"></polyline>
           </g>
         </g>
-        <g id="paths-2" className="path-2"
+        <g id="paths-2" className="animation-draw-2"
           transform="translate(0.000000, -400.000000)"
           stroke="#8401ff" strokeWidth="3" fillRule="evenodd" strokeLinecap="round" strokeLinejoin="round" fill="none" strokeOpacity="1" strokeDasharray="50,150" strokeDashoffset="2000">
           <g id="right" transform="translate(620.000000, 427.000000)">

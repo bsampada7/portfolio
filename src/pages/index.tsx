@@ -1,3 +1,4 @@
+import Background from '@/components/Background'
 import Contact from '@/components/Contact'
 import MenuContainer from '@/components/MenuContainer'
 import Overlay from '@/components/Overlay'
@@ -17,7 +18,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={`bg-[lavender] absolute w-full min-h-full top-0 left-0 ${menuOpen && 'overflow-hidden'}`}>
+      <main className={`absolute w-full min-h-full top-0 left-0 ${menuOpen && 'overflow-hidden'} bg-background text-text-muted`}>
         <ThreeCanvas />
         <MenuContainer />
         <Overlay />

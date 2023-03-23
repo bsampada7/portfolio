@@ -6,9 +6,10 @@ import { useContext, useEffect, useRef } from "react";
 import * as THREE from 'three';
 import { Color, DoubleSide } from "three";
 
+// { map: null, color: new Color('#e000ff'), color2: new Color('#8401ff'), amount: 1 },
 
 const DisplaceMaterial = shaderMaterial(
-  { map: null, color: new Color('#e000ff'), color2: new Color('#8401ff'), amount: 1 },
+  { map: null, color: new Color('#2c2c2c'), color2: new Color('#F5E2C8'), amount: 1 },
   `
     uniform sampler2D map;
     uniform float amount;
@@ -47,8 +48,8 @@ declare global {
 
 const config = {
   size: 64,
-  radius: 0.3,
-  maxAge: 750,
+  radius: 0.2,
+  maxAge: 500,
   interpolation: 0,
   smoothing: 0,
   minforce: 0.3,

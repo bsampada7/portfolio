@@ -32,7 +32,7 @@ export default function AvatarBg() {
       occlude='blending'
       wrapperClass={"pointer-none-children-strict"}
     >
-      <div className="bg-circle-new pointer-events-none">
+      <div className="bg-gradient-to-t to-secondary from-primary pointer-events-none rounded-half w-[30vw] pb-[30vw]">
       </div>
     </Html>
   )
