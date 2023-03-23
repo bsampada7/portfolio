@@ -1,152 +1,141 @@
-const factor = 0.7;
-export const data = {
-  1: {
-    text: "JavaScript",
-    id: 1,
-    color: "yellow",
-    margin: [0, -15 * factor],
+const nodes = [
+  {
+    id: "JavaScript",
+    x: 0,
+    y: 0,
   },
-  2: {
-    text: "React.js",
-    id: 2,
-    color: "blue",
-    margin: [0, 15 * factor],
+  {
+    id: "React.js",
+    x: 80,
+    y: -150,
   },
-  3: {
-    text: "Next.js",
-    id: 3,
-    color: "purple",
-    margin: [0, -15 * factor],
+  {
+    id: "Next.js",
+    x: 250,
+    y: -100,
   },
-  4: {
-    text: "TypeScript",
-    id: 4,
-    color: "green",
-    margin: [0, 15 * factor],
-
+  {
+    id: "TypeScript",
+    x: 200,
+    y: -10,
   },
-  5: {
-    text: "Redux",
-    id: 5,
-    color: "grey",
-    margin: [-30 * factor, 0],
-
+  {
+    id: "Redux",
+    x: 150,
+    y: -200,
   },
-  6: {
-    text: "Three.js",
-    id: 6,
-    color: "red",
-    margin: [0, -15 * factor],
+  {
+    id: "Three.js",
+    x: -50,
+    y: -200,
   },
-  7: {
-    text: "Node.js",
-    id: 7,
-    color: "orange",
-    margin: [30 * factor, 0],
+  {
+    id: "Node.js",
+    x: 150,
+    y: 80,
   },
-  8: {
-    text: "MongoDB",
-    id: 8,
-    color: "orange",
-    margin: [0, 15 * factor],
+  {
+    id: "MongoDB",
+    x: 250,
+    y: 50,
   },
-  9: {
-    text: "SQL",
-    id: 9,
-    color: "orange",
-    margin: [0, 15 * factor],
+  {
+    id: "SQL",
+    x: 250,
+    y: 150,
   },
-  10: {
-    text: "CSS",
-    id: 10,
-    color: "pink",
-    margin: [-20 * factor, 0],
+  {
+    id: "CSS",
+    x: -300,
+    y: 100,
   },
-  11: {
-    text: "SCSS",
-    id: 11,
-    color: "aliceblue",
-    margin: [0, -15 * factor],
+  {
+    id: "SCSS",
+    x: -200,
+    y: 150,
   },
-  12: {
-    text: "HTML",
-    id: 12,
-    color: "red",
-    margin: [30 * factor, 0],
+  {
+    id: "HTML",
+    x: -250,
+    y: -180,
   },
-};
+];
 const links = [
   {
-    source: 1,
-    target: 2,
+    source: "JavaScript",
+    target: "React.js",
   },
   {
-    source: 1,
-    target: 3,
+    source: "JavaScript",
+    target: "Next.js",
   },
   {
-    source: 1,
-    target: 4,
+    source: "JavaScript",
+    target: "TypeScript",
   },
   {
-    source: 1,
-    target: 6,
+    source: "JavaScript",
+    target: "Three.js",
   },
   {
-    source: 1,
-    target: 7,
+    source: "JavaScript",
+    target: "Node.js",
   },
   {
-    source: 1,
-    target: 10,
+    source: "JavaScript",
+    target: "CSS",
   },
   {
-    source: 1,
-    target: 12,
+    source: "JavaScript",
+    target: "HTML",
   },
   {
-    source: 2,
-    target: 3,
+    source: "React.js",
+    target: "Next.js",
   },
   {
-    source: 2,
-    target: 4,
+    source: "React.js",
+    target: "TypeScript",
   },
   {
-    source: 2,
-    target: 5,
+    source: "React.js",
+    target: "Redux",
   },
   {
-    source: 2,
-    target: 6,
+    source: "React.js",
+    target: "Three.js",
   },
   {
-    source: 3,
-    target: 4,
+    source: "Next.js",
+    target: "TypeScript",
   },
   {
-    source: 3,
-    target: 5,
+    source: "Next.js",
+    target: "Redux",
   },
   {
-    source: 7,
-    target: 8,
+    source: "Node.js",
+    target: "MongoDB",
   },
   {
-    source: 7,
-    target: 9,
+    source: "Node.js",
+    target: "SQL",
   },
   {
-    source: 8,
-    target: 9,
+    source: "MongoDB",
+    target: "SQL",
   },
   {
-    source: 10,
-    target: 11,
+    source: "HTML",
+    target: "CSS",
+  },
+  {
+    source: "CSS",
+    target: "SCSS",
   },
 ];
 
 export const gData = {
-  nodes: Object.values(data),
+  nodes: nodes,
   links: links,
 };

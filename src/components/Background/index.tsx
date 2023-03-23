@@ -1,46 +1,50 @@
 import { useEffect } from "react"
-import { data, gData } from './data'
-
-const getColor = (n: any) => '#' + ((n * 1234567) % Math.pow(2, 24)).toString(16).padStart(6, '0');
-
-function nodePaint1({ id, x, y }: any, color: any, ctx: any) {
-  ctx.fillStyle = color;
-  [
-    () => { ctx.fillRect(x - 6, y - 4, 12, 8); }, // rectangle
-    () => { ctx.beginPath(); ctx.moveTo(x, y - 5); ctx.lineTo(x - 5, y + 5); ctx.lineTo(x + 5, y + 5); ctx.fill(); }, // triangle
-    () => { ctx.beginPath(); ctx.arc(x, y, 5, 0, 2 * Math.PI, false); ctx.fill(); }, // circle
-    () => { ctx.font = '10px Sans-Serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('Text', x, y); } // text
-  ][id % 4]();
-}
-
-function nodePaint({ id, x, y }: any, color: any, ctx: any) {
-  ctx.fillStyle = color;
-  ctx.beginPath(); ctx.arc(x, y, 5, 0, 2 * Math.PI, false); ctx.fill();
-  ctx.font = '4px Montserrat'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-  const { text, margin = [0, 0] } = data[id]
-  ctx.fillText(text, x + margin[0], y + margin[1]);
-}
+import { gData } from './data'
 
 const Background = () => {
 
   useEffect(() => {
     const func = async () => {
       const domEl = document.getElementById('graph')
-      const container = document.getElementById('graph-container')
-      
+
+      const textColor = "#B417F199"
+      const linkColor = "#f5e2c829"
+
       const ForceGraph = (await import('force-graph')).default
-      if (domEl && container) {
+      if (domEl) {
         const myGraph = ForceGraph()
         myGraph(domEl)
-          .width(container.clientWidth)
-          .height(container.clientHeight)
-          .nodeCanvasObject((node, ctx) => nodePaint(node, getColor(node.id), ctx))
-          // .nodePointerAreaPaint(nodePaint)
+          .width(domEl.clientWidth)
+          .height(domEl.clientHeight)
+          .nodeCanvasObject((node: any, ctx, globalScale) => {
+            const label = node.id as string;
+            const fontSize = 24 / globalScale;
+            ctx.font = `${fontSize}px Sans-Serif`;
+            const textWidth = ctx.measureText(label).width;
+            const bckgDimensions = [textWidth, fontSize].map(n => n + fontSize * 0.2) as [number, number]
+            ctx.fillStyle = '#0E0B16';
+            ctx.fillRect(node.x - bckgDimensions[0] / 2, node.y - bckgDimensions[1] / 2, ...bckgDimensions);
+
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillStyle = textColor;
+            ctx.fillText(label, node.x, node.y);
+
+            node.__bckgDimensions = bckgDimensions;
+          })
+          .nodePointerAreaPaint((node: any, color, ctx) => {
+            ctx.fillStyle = textColor;
+            const bckgDimensions = node.__bckgDimensions as [number, number];
+            bckgDimensions && ctx.fillRect(node.x - bckgDimensions[0] / 2, node.y - bckgDimensions[1] / 2, ...bckgDimensions);
+          })
+          .linkColor(() => linkColor)
+          .linkWidth(2)
+          .linkDirectionalParticles(() => 4)
+          .linkDirectionalParticleSpeed(() => 0.001)
           .nodeLabel('id')
-          .cooldownTicks(10)
+          .cooldownTicks(0)
           .graphData(gData);
-          myGraph.d3Force('top', null);
-          myGraph.onEngineStop(() => myGraph.zoomToFit(400,100));
+        myGraph.d3Force('center', null);
       }
     }
     func()
@@ -48,7 +52,7 @@ const Background = () => {
 
   return (
     <>
-      <div id="graph">
+      <div id="graph" className="absolute w-[80%] h-full left-[20%]">
       </div>
     </>
   );

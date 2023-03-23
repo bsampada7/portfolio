@@ -3,6 +3,7 @@ import { Html } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
+import Background from "../Background";
 import PrimaryButton from "../PrimaryButton";
 
 function Introduction() {
@@ -20,23 +21,23 @@ function Introduction() {
   return (
     <Html
       transform
-      position={[0, -0.6, -7.9]}
+      position={[0, -0.6, -10]}
+      scale={1.17}
       portal={ref || undefined}
       occlude='blending'
       wrapperClass={"pointer-none-children-strict"}
     >
       <div className="introduction show w-[100vw] h-[100vh] relative" ref={introduction}>
+        <Background />
         <div className="pointer-events-none">
-          <div className="greeting text-primary absolute top-20 left-10 ">
-            <div className="text-9xl font-bold ">
+          <div className="greeting absolute top-20 left-10 w-1/3">
+            <div className="text-9xl font-bold montserrat text-text-muted">
               <span>H</span>
               <span>I</span>
-              <span className="flicker">!</span>
+              <span className="animation-flicker overflow-hidden width-full z-10 left-[27%] text-left">!</span>
             </div>
-            <div className="text-5xl mt-4">I am Sampada Bhujel</div>
-            <div className="text-3xl mt-4">A full stack developer with over<br /> <strong className="text-secondary">3 years</strong> experience</div>
-          </div>
-          <div className="absolute left-10 top-96 z-10">
+            <div className="text-5xl mt-4 montserrat">I am <span className="block">Sampada Bhujel</span></div>
+            <div className="text-3xl mt-4">A full stack developer with <br /> over <strong className="text-secondary">3 years</strong> experience</div>
             <Link href={"#Contact"} className="pointer-events-auto">
               <PrimaryButton text={"Get in touch"} className={"mt-8 ml-0 pointer-events-auto pointer-events-strict cursor-pointer"} />
             </Link>
