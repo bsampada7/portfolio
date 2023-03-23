@@ -25,6 +25,7 @@
     "eslint": "8.35.0",
     "eslint-config-next": "13.2.1",
     "firebase": "^9.17.2",
+    "force-graph": "^1.43.0",
     "leva": "^0.9.34",
     "next": "13.2.1",
     "react": "18.2.0",
