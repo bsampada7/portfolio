@@ -1,6 +1,6 @@
 import { MyStoreProvider } from '@/store/mystore'
 import '@/styles/globals.css'
-import '@/styles/nav.css'
+import '@/styles/brand.css'
 import '@/styles/all.css'
 
 import type { AppProps } from 'next/app'
