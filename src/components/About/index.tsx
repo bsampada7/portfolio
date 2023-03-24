@@ -23,7 +23,7 @@ function About() {
   const { height } = useThree((state) => state.viewport)
   const { gl } = useThree();
   const skillsRef = useRef<any>(null)
-  const [positionY, setpositionY] = useState(-0.8);
+  const [positionY, setpositionY] = useState(-1 * height);
   const [showChat, setshowChat] = useState(-1);
   const [showBubbles, setshowBubbles] = useState(true);
   const [userMessages, setuserMessages] = useState<{ msg: string, response: string }[]>([]);
@@ -36,7 +36,7 @@ function About() {
 
   useEffect(() => {
     // setpositionY(THREE.MathUtils.damp(positionY, 2.5 * height * scrollPosition2 + 0.5 * scrollPosition2 - 0.5, 4, delta2))
-    setpositionY(THREE.MathUtils.lerp(-0.8, 2.5 * height, scrollPosition2))
+    setpositionY(THREE.MathUtils.lerp(-1 * height, 0.25 * height, scrollPosition2))
     if (skillsRef.current) {
       skillsRef.current.classList.toggle('show', scrollPosition1)
       if (!started) startChat()
@@ -106,21 +106,24 @@ function About() {
     return false
   }
 
+  //normal x 0 z -7.9
+  //4k 
+
   return (
     <Html
       transform
       position={[0, positionY, -7.9]}
       portal={portalRef || undefined}
       occlude='blending'
-      wrapperClass={"pointer-none-children-strict"}>
-      <div className="skills w-[100vw] h-[100vh] relative pointer-events-none" ref={skillsRef} id="About">
+      wrapperClass={"pointer-none-children-strict about-wrapper"}>
+      <div className="skills w-[100vw] h-[100vh] max-w-[78rem] relative pointer-events-none" ref={skillsRef} id="About">
         <div className="pointer-events-none">
           <div className="absolute w-full h-full">
-            <div className="text-3xl font-bold mb-4 mt-24 ml-10">
+            <div className="text-4xl font-bold mb-4 mt-24 ml-10 text-primary">
               <span>About</span>
             </div>
-            <div className="relative rounded-md border-0 ml-10 w-5/12 h-1/2 overflow-hidden bg-transparent">
-              <div className={"absolute bottom-4 right-4 h-12 pt-4 chat-bubble-typing bg-transparent p-4 py-2 border-2 border-transparent inline-block " + (showBubbles ? "show" : "")}>
+            <div className="relative rounded-md border-0 ml-10 w-5/12 h-1/2 overflow-hidden bg-transparent text-lg">
+              <div className={"absolute bottom-4 right-4 h-12 pt-4 chat-bubble-typing bg-transparent p-4 py-4 border-2 border-transparent inline-block " + (showBubbles ? "show" : "")}>
                 <div className="typing items-center flex h-4 gap-1.5">
                   {[1, 2, 3].map((num) => (
                     <div key={num} className="dot bg-text-muted rounded-half w-1.5 h-1.5 align-middle inline-block"></div>
@@ -130,7 +133,7 @@ function About() {
               <div className={"chatbox-container" + (showBubbles ? "" : " expand")}>
                 <div id="chatbox" className={`absolute flex flex-col py-8 gap-4 items-end h-full top-[100%] pointer-events-auto `}>
                   {messages.map((message, index) => (
-                    <div key={index} className={"chat-bubble bg-transparent p-4 py-2 border-2 border-transparent inline-block "
+                    <div key={index} className={"chat-bubble bg-transparent p-4 py-4 border-2 border-transparent inline-block "
                       + (showChat >= index ? "show " : "")
                     }>
                       {message}
@@ -153,9 +156,9 @@ function About() {
             </div>
             <div className="ml-10 mt-2 w-5/12 relative">
               <form onSubmit={onMessageSend}>
-                <input id="user-msg-input" name="user-msg-input" type={'text'} placeholder="Type your message here" className="msg-input w-full p-2.5 pr-12 text-text-muted rounded pointer-events-strict 
-             outline-0 focus-visible:border-primary border-transparent border-0 "></input>
-                <button className="absolute right-1.5 p-2 bg-primary mt-1.5 rounded-half pointer-events-strict " type="submit">
+                <input id="user-msg-input" name="user-msg-input" type={'text'} placeholder="Type your message here" className="msg-input w-full p-3.5 pr-12 text-text-muted rounded pointer-events-strict 
+                            outline-0 focus-visible:border-primary border-transparent border-0 text-lg "></input>
+                <button className="absolute right-1.5 p-3 bg-primary mt-1.5 rounded-half pointer-events-strict " type="submit">
                   <img src="/icons/send.svg" className="w-4 h-4"></img>
                 </button>
               </form>

@@ -4,10 +4,17 @@ import { useState } from 'react';
 
 export const numberofPages = 6
 
+declare global{
+  interface Window{
+    scrolldrei : any
+  }
+}
+
 export default function useScrollData(page: number) {
   const [scrollData, setScrollData] = useState([0, 0]);
 
   const scroll = useScroll()
+  window.scrolldrei = scroll
   const numberofPagesFrac = 1 / (numberofPages - 1)
   useFrame((state, delta) => {
     let r1 = Math.max((scroll.range(0, 1) / numberofPagesFrac) - page, 0)

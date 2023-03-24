@@ -4,9 +4,12 @@ import { Scroll, ScrollControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { useContext } from "react";
 import { Cover } from "../Cover";
+import Avatar from "../Cover/Avatar";
+import AvatarBg from "../Cover/AvatarBg";
 import Education from "../Education";
 import Experience from "../Experience";
 import Projects from "../Projects";
+import Wireframe from "../Wireframe";
 import EnvSettings from "./EnvSettings";
 
 declare global {
@@ -21,20 +24,23 @@ const ThreeCanvas = () => {
       <Canvas className={state.canvasClass}>
         <EnvSettings />
         <ScrollControls pages={numberofPages}>
-          {/* <Scroll> */}
+          <AvatarBg />
+          <Avatar />
+          <Wireframe />
+          <Scroll>
             <Cover />
-          {/* </Scroll> */}
+          </Scroll>
           <Scroll html>
-            <section id='Education' className="absolute w-[100vw] top-[200vh] education max-w-[92rem] h-[100vh] flex items-center justify-center">
+            <section id='Education' className="absolute w-[100vw] top-[200vh] education h-[100vh] flex items-center justify-center">
               <Education />
             </section>
-            <section id='Experience' className="absolute w-[100vw] top-[300vh] experience max-w-[92rem] h-[100vh] flex items-center justify-center">
+            <section id='Experience' className="absolute w-[100vw] top-[300vh] experience h-[100vh] flex items-center justify-center">
               <Experience />
             </section>
-            <section id='Projects' className="absolute w-[100vw] top-[400vh] project max-w-[92rem] h-[100vh] flex items-center justify-center overflow-auto">
+            <section id='Projects' className="absolute w-[100vw] top-[400vh] projects h-[100vh] flex items-center justify-center overflow-auto bg-background1">
               <Projects />
             </section>
-            <section id='Contact' className="absolute w-[100vw] top-[500vh] contac max-w-[92rem] h-[100vh] flex items-center justify-center">
+            <section id='Contact' className="absolute w-[100vw] top-[500vh] contact h-[100vh] flex items-center justify-center bg-background">
               {/* <Contact /> // will be rendered inside this div using javascript*/}
             </section>
           </Scroll>

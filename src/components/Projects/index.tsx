@@ -4,11 +4,12 @@ import Card from "../Card";
 const Projects = () => {
   const [activeCard, setactiveCard] = useState(2);
   const containerRef = useRef<HTMLDivElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (containerRef.current) {
+    if (containerRef.current && wrapperRef.current) {
       const width = containerRef.current.clientWidth
-      const windowWidth = window.innerWidth
+      const windowWidth = wrapperRef.current.clientWidth
       const translate = (windowWidth / 2) - ((width / 5) * (activeCard + 1)) + ((width / 5) / 2) - 32
       containerRef.current.style.transform = `translateX(${translate}px)`
     };
@@ -28,7 +29,7 @@ const Projects = () => {
 
 
   return (
-    <div className="flex flex-col w-full h-full gap-4 pb-10 pt-10 bg-background1 relative">
+    <div className="flex flex-col w-full h-full gap-4 pb-10 pt-10 max-w-[90rem] mx-auto relative" ref={wrapperRef}>
       <div className="text-3xl font-bold mx-auto my-10 text-primary">
         <span>Projects</span>
       </div>

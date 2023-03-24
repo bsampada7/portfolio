@@ -92,10 +92,10 @@ const Wireframe = (props: any) => {
 
   return (
     <>
-      <Mask id={1} position={[0, -1.2 * height, -1]} ref={refmask}>
+      <Mask id={1} position={[0, -1.2 * height, -1]} ref={refmask} >
         <planeGeometry args={[1.2 * width, 1.2 * height, 1, 1]} />
       </Mask>
-      <mesh onPointerMove={onMove} scale={[1, 1, 1]} position={[0, -1.2 * height, -1]} rotation={[0, 0, 0.8]} {...props} ref={ref}>
+      <mesh visible={scrollPosition > 0} onPointerMove={onMove} scale={[1, 1, 1]} position={[0, -1.2 * height, -1]} rotation={[0, 0, 0.8]} {...props} ref={ref}>
         <planeGeometry args={[20, 20, 64, 64]} />
         <displaceMaterial key={DisplaceMaterial.key} map={texture} side={DoubleSide} {...disp} opacity={0.1} wireframe  {...stencil} >
         </displaceMaterial>

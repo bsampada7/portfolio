@@ -23,7 +23,7 @@ export default function Avatar() {
     if (!(ref?.current)) return
     ref.current.rotation.y = THREE.MathUtils.damp(ref.current.rotation.y, (-scrollPosition1 - 1.5), 4, delta1)
     ref.current.position.x = THREE.MathUtils.damp(ref.current.position.x, (3 * scrollPosition1), 4, delta1)
-    ref.current.position.y = THREE.MathUtils.lerp(-3.5, 4.5, scrollPosition2)
+    ref.current.position.y = THREE.MathUtils.lerp(-3.5, 0.25 * height, scrollPosition2 * 1.5)
     ref.current.scale.x = THREE.MathUtils.damp(ref.current.scale.x, (-0.1 * scrollPosition1 + 1.3), 4, delta1)
     ref.current.scale.y = THREE.MathUtils.damp(ref.current.scale.y, (-0.1 * scrollPosition1 + 1.3), 4, delta1)
     ref.current.scale.z = THREE.MathUtils.damp(ref.current.scale.z, (-0.1 * scrollPosition1 + 1.3), 4, delta1)

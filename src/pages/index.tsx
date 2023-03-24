@@ -19,10 +19,13 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={`absolute w-full min-h-full top-0 left-0 ${menuOpen && 'overflow-hidden'} bg-background text-text-muted`}>
-        <ThreeCanvas />
-        <MenuContainer />
-        <Overlay />
-        <Contact />
+        <div className='relative w-full min-h-full mx-auto'>
+          <ThreeCanvas />
+          <MenuContainer />
+          <Overlay />
+          <Contact />
+        </div>
+
       </main>
     </>
   )

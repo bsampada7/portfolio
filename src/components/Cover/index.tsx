@@ -10,11 +10,9 @@ export const Cover = () => {
   window.scene = scene
   return (
     <>
-      <AvatarBg />
-      <Avatar />
+
       <Introduction />
       <About />
-      <Wireframe />
     </>
   )
 }

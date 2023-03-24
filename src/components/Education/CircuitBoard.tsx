@@ -3,7 +3,7 @@ import React from "react";
 const CircuitBoard = () => {
   return (
     <>
-      <svg viewBox="0 0 800 800" version="1.1" className="absolute top-[40%]  opacity-50">
+      <svg viewBox="0 0 800 800" version="1.1" className="circuit absolute top-[40%]  opacity-50">
         <g id="paths" className="animation-draw" stroke="#8401ff" strokeWidth="2"
           transform="translate(0.000000, -400.000000)"
           fillRule="evenodd" strokeLinecap="round" strokeLinejoin="round" fill="none" strokeOpacity="1" strokeDasharray="30,150" strokeDashoffset="2000">

@@ -115,7 +115,7 @@ const Matrix = () => {
 
   return (
     <div>
-      <canvas width={400} height={300} className="absolute w-full  left-0 filter blur-sm h-full" ref={canvasRef}>
+      <canvas width={400} height={300} className="absolute w-full max-w-[90rem] filter blur-sm h-full" ref={canvasRef}>
 
       </canvas>
 

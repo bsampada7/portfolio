@@ -12,7 +12,7 @@ const Experience = () => {
 
 
   return (
-    <div className="timeline flex flex-col w-full h-full gap-4 relative pointer-events-strict" onMouseMove={(e) => e.stopPropagation()}>
+    <div className="timeline flex flex-col w-full h-full gap-4 relative pointer-events-strict max-w-[90rem]" onMouseMove={(e) => e.stopPropagation()}>
       <div className="text-3xl font-bold mb-4 text-primary mx-auto mt-12">
         <span>Experience</span>
       </div>
@@ -21,7 +21,7 @@ const Experience = () => {
           <div>
             <time>2018</time>
             <div className="discovery" onMouseMove={(e) => e.stopPropagation()}>
-              <h1 className="text-primary text-xl font-bold">LIS Nepal Pvt. Ltd.</h1>
+              <h1 className="text-primary text-xl font-bold text-center">LIS Nepal Pvt. Ltd.</h1>
               <span className="flex flex-row gap-2">
                 <img src="icons/location-filled.svg" className="w-6 h-6 inline-block"></img>
                 <span>Kathmandu, Nepal</span>
@@ -39,7 +39,7 @@ const Experience = () => {
           <div>
             <time>2019-2022</time>
             <div className="discovery">
-              <h1 className="text-primary text-xl font-bold">Alternative Technology</h1>
+              <h1 className="text-primary text-xl font-bold text-center">Alternative Technology</h1>
               <span className="flex flex-row gap-2">
                 <img src="icons/location-filled.svg" className="w-6 h-6 inline-block"></img>
                 <span>Kathmandu, Nepal</span>
@@ -57,7 +57,7 @@ const Experience = () => {
           <div>
             <time>2022-Present</time>
             <div className="discovery">
-              <h1 className="text-primary text-xl font-bold">Myaamia Center</h1>
+              <h1 className="text-primary text-xl font-bold text-center">Myaamia Center</h1>
               <span className="flex flex-row gap-2">
                 <img src="icons/location-filled.svg" className="w-6 h-6 inline-block"></img>
                 <span>Miami University, Oxford, OH, USA</span>
@@ -75,7 +75,7 @@ const Experience = () => {
           <div>
             <time>2023(Summer)</time>
             <div className="discovery">
-              <h1 className="text-primary text-xl font-bold">Summer Internship</h1>
+              <h1 className="text-primary text-xl font-bold text-center">Summer Internship</h1>
               <p>
                 Looking for a challeging and growing internship experience
               </p>
