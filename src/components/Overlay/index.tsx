@@ -16,10 +16,10 @@ const Overlay = () => {
     <div className="absolute w-full h-full left-0 top-0 pointer-events-none">
       <Brand />
       <button
-        className="fixed pointer-events-auto cursor-pointer w-10 h-10 p-2 m-8 right-0 top-0 rounded-lg"
+        className="fixed pointer-events-auto cursor-pointer w-10 h-10 p-2 m-8 right-0 top-0 rounded-lg menu-button bg-primary"
         onClick={handleMenuToggle}
       >
-        <img src="icons/hamburger.svg" alt="menu"></img>
+        <img src={state.menuOpen ? "icons/close.svg" : "icons/hamburger.svg"} alt="menu"></img>
       </button>
 
     </div>

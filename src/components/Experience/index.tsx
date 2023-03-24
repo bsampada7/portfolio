@@ -13,7 +13,7 @@ const Experience = () => {
 
   return (
     <div className="timeline flex flex-col w-full h-full gap-4 relative pointer-events-strict max-w-[90rem]" onMouseMove={(e) => e.stopPropagation()}>
-      <div className="text-3xl font-bold mb-4 text-primary mx-auto mt-12">
+      <div className="text-2xl xs:text-3xl font-bold mx-auto my-10 text-primary text-heading">
         <span>Experience</span>
       </div>
       <ul>
@@ -24,7 +24,7 @@ const Experience = () => {
               <h1 className="text-primary text-xl font-bold text-center">LIS Nepal Pvt. Ltd.</h1>
               <span className="flex flex-row gap-2">
                 <img src="icons/location-filled.svg" className="w-6 h-6 inline-block"></img>
-                <span>Kathmandu, Nepal</span>
+                <span className="text-center">Kathmandu, Nepal</span>
               </span>
               <p>
                 Software Engineering Intern
@@ -42,7 +42,7 @@ const Experience = () => {
               <h1 className="text-primary text-xl font-bold text-center">Alternative Technology</h1>
               <span className="flex flex-row gap-2">
                 <img src="icons/location-filled.svg" className="w-6 h-6 inline-block"></img>
-                <span>Kathmandu, Nepal</span>
+                <span className="text-center">Kathmandu, Nepal</span>
               </span>
               <p>
                 Software Engineer
@@ -60,7 +60,7 @@ const Experience = () => {
               <h1 className="text-primary text-xl font-bold text-center">Myaamia Center</h1>
               <span className="flex flex-row gap-2">
                 <img src="icons/location-filled.svg" className="w-6 h-6 inline-block"></img>
-                <span>Miami University, Oxford, OH, USA</span>
+                <span className="text-center">Miami University, Oxford, OH, USA</span>
               </span>
               <p>
                 Full Stack Developer
@@ -77,7 +77,7 @@ const Experience = () => {
             <div className="discovery">
               <h1 className="text-primary text-xl font-bold text-center">Summer Internship</h1>
               <p>
-                Looking for a challeging and growing internship experience
+                Looking for a challenging and growing internship experience
               </p>
             </div>
           </div>

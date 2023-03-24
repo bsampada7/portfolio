@@ -30,7 +30,7 @@ const Projects = () => {
 
   return (
     <div className="flex flex-col w-full h-full gap-4 pb-10 pt-10 max-w-[90rem] mx-auto relative" ref={wrapperRef}>
-      <div className="text-3xl font-bold mx-auto my-10 text-primary">
+      <div className="text-2xl xs:text-3xl font-bold mx-auto my-10 text-primary text-heading">
         <span>Projects</span>
       </div>
       <div className="w-full flex-grow flex overflow-auto px-8 pointer-events-none" >
@@ -45,7 +45,7 @@ const Projects = () => {
             ]}
             description={"An interactive magazine prototype as a form of company newsletter"}
             livelink={"https://beyonddreams.explorug.com/1/"}
-            className={`${activeCard === 0 && 'scale-110'}`}
+            className={`${activeCard === 0 && 'scale-110 activeCard'}`}
           />
 
           <Card
@@ -58,7 +58,7 @@ const Projects = () => {
             ]}
             description={"A fully customizable room for a virutal visualization of rugs in a room"}
             livelink={"https://beyonddreams.explorug.com/2/?page=13"}
-            className={`${activeCard === 1 && 'scale-110'}`}
+            className={`${activeCard === 1 && 'scale-110 activeCard'}`}
 
           />
 
@@ -73,7 +73,7 @@ const Projects = () => {
             description={"My portfolio site showcasing my skills and projects"}
             github={"https://github.com/sampada04/portfolio"}
             livelink={"https://virtualrugstudio.com/"}
-            className={`${activeCard === 2 && 'scale-110'}`}
+            className={`${activeCard === 2 && 'scale-110 activeCard'}`}
 
           />
 
@@ -87,7 +87,7 @@ const Projects = () => {
             ]}
             description={"Client Work for a website"}
             livelink={"https://onebarrister.co.uk/"}
-            className={`${activeCard === 3 && 'scale-110'}`}
+            className={`${activeCard === 3 && 'scale-110 activeCard'}`}
 
           />
 
@@ -100,7 +100,7 @@ const Projects = () => {
             ]}
             description={"A Virtual studio to capture rugs in multiple light and room settings"}
             livelink={"https://virtualrugstudio.com/"}
-            className={`${activeCard === 4 && 'scale-110'}`}
+            className={`${activeCard === 4 && 'scale-110 activeCard'}`}
 
           />
 

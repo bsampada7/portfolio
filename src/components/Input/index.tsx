@@ -4,7 +4,7 @@ export default function Input({ type, label, name, placeholder, register, error,
   { type?: HTMLInputTypeAttribute, label: string, name: string, placeholder: string, register: any, error?: any, className?: string }) {
 
   return (
-    <div className="flex flex-col mb-4">
+    <div className="flex flex-col mb-2 xs:mb-4">
       <label className={`text-text-muted text-base mb-2`}>{label}</label>
       <input
         type={type ?? "text"}
@@ -16,6 +16,6 @@ export default function Input({ type, label, name, placeholder, register, error,
           ${className || ''}`
         }
       />
-      {error && <p role="alert" className="text-xs m-0 text-danger">{error}</p>}
+      {error && <p role="alert" className="text-xs m-0 text-red-600">{error}</p>}
     </div>);
 }
