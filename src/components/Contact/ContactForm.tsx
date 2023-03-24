@@ -1,11 +1,12 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import axios from 'axios';
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import Input from '../Input';
 import PrimaryButton from '../PrimaryButton';
 import FormError from './FormError';
+import emailjs from '@emailjs/browser';
+import FormSuccess from './FormSuccess';
 
 declare global {
   interface Window { grecaptcha: any; }
@@ -32,32 +33,27 @@ export default function ContactForm() {
     resolver: yupResolver(schema)
   });
   const [formSubmitError, setformSubmitError] = useState<string | null>(null);
+  const formRef = useRef(null);
 
 
   const onSubmit = (data: any) => {
-
     window.grecaptcha.ready(function () {
       window.grecaptcha.execute('6LdGjc8kAAAAACy3ewbRsVGj4xY8-eVan5Atw037', { action: 'submit' }).then(function (token: any) {
-        var bodyFormData = new FormData();
-        Object.keys(data).forEach(key => {
-          bodyFormData.append(key, data[key]);
-        })
-        // bodyFormData.append('g-recaptcha-response', token);
+        if (!formRef.current) return;
+        const service_id = process.env.NEXT_PUBLIC_SERVICE_ID
+        const template_id = process.env.NEXT_PUBLIC_TEMPLATE_ID
+        const user_id = process.env.NEXT_PUBLIC_USER_ID
 
-        axios({
-          method: "post",
-          // url: "https://onebarrister.co.uk/email.php",
-          url: "https://formsubmit.co/bhujelsampada@gmail.com",
-          data: data,
-          headers: { "Content-Type": "application/json" },
-        })
-          .then(function (response) {
-            console.log(response);
-          })
-          .catch(function (response) {
-            console.log(response);
-            setformSubmitError("error")
-          });
+        if (service_id && template_id && user_id) {
+          emailjs.sendForm(service_id, template_id, formRef.current, user_id)
+            .then((result) => {
+              console.log(result.text);
+              setformSubmitError('ok')
+            }, (error) => {
+              console.log(error.text);
+              setformSubmitError('error')
+            });
+        }
       });
     });
 
@@ -68,8 +64,8 @@ export default function ContactForm() {
   }
 
   return (
-    <div className='w-full h-full max-w-lg bg-[#141414] p-8 rounded-2xl mt-10 contact-from-wrapper'>
-      <form onSubmit={handleSubmit(onSubmit)} onChange={onFormChange} className="flex flex-col gap-4 text-left mt-4 ">
+    <div className='w-full h-full max-w-lg bg-[#141414] px-4 p-2 xs:p-8 rounded-2xl xs:mt-10 contact-from-wrapper'>
+      <form onSubmit={handleSubmit(onSubmit)} onChange={onFormChange} className="flex flex-col gap-4 text-left mt-4 " ref={formRef}>
         <>
           <Input
             label="Name"
@@ -97,7 +93,7 @@ export default function ContactForm() {
             />
             {errors.message?.message
               && (typeof errors.message?.message === 'string')
-              && <p role="alert">{errors.message?.message}</p>
+              && <p role="alert" className='text-red-500 text-sm'>{errors.message?.message}</p>
             }
           </div>
 
@@ -105,7 +101,8 @@ export default function ContactForm() {
             <PrimaryButton text="Send message" className={`grow`} submit />
           </div>
 
-          <FormError show={formSubmitError === "error"} className="fixed md:relative" />
+          <FormError show={formSubmitError === "error"} className="md:relative" />
+          <FormSuccess show={formSubmitError === "ok"} className="md:relative" />
         </>
       </form>
     </div >

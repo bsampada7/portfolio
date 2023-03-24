@@ -52,7 +52,7 @@ const Background = () => {
 
   return (
     <>
-      <div id="graph" className="absolute w-[80%] h-full left-[20%]">
+      <div id="graph" className="absolute w-full h-full lg:left-[20%]">
       </div>
     </>
   );

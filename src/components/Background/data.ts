@@ -1,63 +1,64 @@
+const factor = 0.9;
 const nodes = [
   {
     id: "JavaScript",
-    x: 0,
-    y: 0,
+    x: 0 * factor,
+    y: 0 * factor,
   },
   {
     id: "React.js",
-    x: 80,
-    y: -150,
+    x: 80 * factor,
+    y: -150 * factor,
   },
   {
     id: "Next.js",
-    x: 250,
-    y: -100,
+    x: 250 * factor,
+    y: -100 * factor,
   },
   {
     id: "TypeScript",
-    x: 200,
-    y: -10,
+    x: 200 * factor,
+    y: -10 * factor,
   },
   {
     id: "Redux",
-    x: 150,
-    y: -200,
+    x: 150 * factor,
+    y: -180 * factor,
   },
   {
     id: "Three.js",
-    x: -50,
-    y: -200,
+    x: -30 * factor,
+    y: -180 * factor,
   },
   {
     id: "Node.js",
-    x: 150,
-    y: 80,
+    x: 150 * factor,
+    y: 80 * factor,
   },
   {
     id: "MongoDB",
-    x: 250,
-    y: 50,
+    x: 250 * factor,
+    y: 50 * factor,
   },
   {
     id: "SQL",
-    x: 250,
-    y: 150,
+    x: 250 * factor,
+    y: 150 * factor,
   },
   {
     id: "CSS",
-    x: -300,
-    y: 100,
+    x: -250 * factor,
+    y: 100 * factor,
   },
   {
     id: "SCSS",
-    x: -200,
-    y: 150,
+    x: -200 * factor,
+    y: 150 * factor,
   },
   {
     id: "HTML",
-    x: -250,
-    y: -180,
+    x: -250 * factor,
+    y: -180 * factor,
   },
 ];
 const links = [

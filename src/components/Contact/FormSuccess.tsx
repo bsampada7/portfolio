@@ -1,7 +1,7 @@
 import { Transition } from "@headlessui/react";
 import { Fragment } from "react";
 
-export default function FormError({ show, className }: { show: boolean, className?: string }) {
+export default function FormSuccess({ show, className }: { show: boolean, className?: string }) {
   return (
     <Transition
       as={Fragment}
@@ -13,9 +13,9 @@ export default function FormError({ show, className }: { show: boolean, classNam
       leaveFrom="opacity-100 rotate-0 scale-100 "
       leaveTo="opacity-0 scale-95 "
     >
-      <div className={`flex bottom-0 left-0 gap-2 text-red-500 justify-center md:rounded-lg ${className || ''}`}>
+      <div className={`flex bottom-0 left-0 gap-2 text-secondary md:rounded-lg justify-center ${className || ''}`}>
         <span className="leading-[1.625rem] font-bold">
-          Sorry, we ran into an issue.
+          Your message has been sent.
         </span>
       </div>
     </Transition>

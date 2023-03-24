@@ -23,7 +23,7 @@ const Brand = () => {
   return (
     // bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 
     <div className="flex justify-between fixed top-0  z-50
-                     m-8">
+                     m-8 brand-wrapper">
       <div>
         <div id="brand" className="text-primary pointer-events-auto">
           <span>S</span>
