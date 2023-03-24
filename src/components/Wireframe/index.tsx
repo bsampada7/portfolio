@@ -86,6 +86,7 @@ const Wireframe = (props: any) => {
         payload: { canvasClass: '' }
       })
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [scrollPosition]);
 
 

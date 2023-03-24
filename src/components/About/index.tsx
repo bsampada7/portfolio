@@ -57,7 +57,8 @@ function About() {
     let chatbox = document.getElementById('chatbox')
     if (chatbox) {
       let height = chatbox.children[showChat]?.clientHeight
-      let up = chatbox.children[showChat]?.offsetTop + height + 16
+      let el = chatbox.children[showChat] as any
+      let up = (el.offsetTop || 0) + height + 16
       chatbox.style.top = "calc(100% - " + up + "px)"
       func()
     }
@@ -91,7 +92,9 @@ function About() {
 
   const onMessageSend = (e: any) => {
     e.preventDefault();
-    let msg = document.getElementById('user-msg-input').value
+    const el = document.getElementById('user-msg-input') as HTMLInputElement
+    if (!el) return;
+    const msg = el.value
     if (msg) {
       let splitmsg = msg.split(' ');
       const hasEmail = splitmsg.some((item: string) => item.match(mailformat))
@@ -105,7 +108,7 @@ function About() {
       }, 500);
       if (hasEmail) sethasGivenEmail(true)
     }
-    document.getElementById('user-msg-input').value = ''
+    el.value = ''
     return false
   }
 
@@ -188,12 +191,12 @@ function About() {
                     </div>
                   ))}
                   {userMessages.map((message, index) => (
-                    <div className="flex flex-col gap-4 items-end">
-                      <div key={index} className={"chat-bubble user show bg-transparent p-2 px-4 border-2 border-transparent inline-block "
+                    <div key={index} className="flex flex-col gap-4 items-end">
+                      <div className={"chat-bubble user show bg-transparent p-2 px-4 border-2 border-transparent inline-block "
                       }>
                         {message.msg}
                       </div>
-                      <div key={index + "cb"} className={"chat-bubble show bg-transparent p-2 px-4 border-2 border-transparent inline-block "
+                      <div className={"chat-bubble show bg-transparent p-2 px-4 border-2 border-transparent inline-block "
                       }>
                         {message.response}
                       </div>
