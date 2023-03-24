@@ -5,7 +5,6 @@ import { useThree } from "@react-three/fiber";
 import { Fragment, useEffect, useRef, useState } from "react";
 import * as THREE from 'three';
 import emailjs from '@emailjs/browser';
-import { getEmailJSKeys } from "@/constants";
 
 const messages = [
   "I am enthusiastic about interactive 3D in web",
