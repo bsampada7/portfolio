@@ -13,7 +13,7 @@ type GLTFResult = GLTF & {
 
 
 export default function Avatar() {
-  const { nodes, materials } = useGLTF("/model/test.gltf") as GLTFResult;
+  const { nodes, materials } = useGLTF("/model/model.glb") as GLTFResult;
   const visible = useRef(false)
   const ref = useIntersect((isVisible) => (visible.current = isVisible)) as any
   const { height } = useThree((state) => state.viewport)
@@ -60,43 +60,44 @@ export default function Avatar() {
 
 
   return (
+
     <group rotation={[0, -1.5, 0]} position={[0, -3.5, 0]} scale={scale * factor} dispose={null} ref={ref}>
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.front_hair.geometry}
-        material={materials.Sally_hair}
-        position={[-0.1, 4.29, 0.24]}
-        rotation={[-Math.PI, 1.55, -Math.PI]}
-        scale={0.01}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Head1_HairStrand021.geometry}
-        material={materials.Sally_hair}
-        position={[-0.1, 4.29, 0.24]}
-        rotation={[-Math.PI, 1.55, -Math.PI]}
-        scale={0.01}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.FBHead.geometry}
-        material={materials.FBHead_preview_mat}
-        position={[-0.18, 4.46, 0.25]}
-        rotation={[-Math.PI, 1.55, -Math.PI]}
-        scale={0.29}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Ch29.geometry}
-        material={materials["Ch29_Body.002"]}
-        position={[-0.28, 0.4, 0.25]}
-        rotation={[1.57, -0.01, -1.49]}
-        scale={0.03}
-      />
-    </group>
+    <mesh
+      castShadow
+      receiveShadow
+      geometry={nodes.front_hair.geometry}
+      material={materials.Sally_hair}
+      position={[-0.1, 4.29, 0.24]}
+      rotation={[-Math.PI, 1.55, -Math.PI]}
+      scale={0.01}
+    />
+    <mesh
+      castShadow
+      receiveShadow
+      geometry={nodes.Head1_HairStrand021.geometry}
+      material={materials.Sally_hair}
+      position={[-0.1, 4.29, 0.24]}
+      rotation={[-Math.PI, 1.55, -Math.PI]}
+      scale={0.01}
+    />
+    <mesh
+      castShadow
+      receiveShadow
+      geometry={nodes.FBHead.geometry}
+      material={materials.FBHead_preview_mat}
+      position={[-0.18, 4.46, 0.25]}
+      rotation={[2.05, 1.52, -2.05]}
+      scale={0.29}
+    />
+    <mesh
+      castShadow
+      receiveShadow
+      geometry={nodes.Ch29.geometry}
+      material={materials["Ch29_Body.002"]}
+      position={[-0.28, 0.4, 0.25]}
+      rotation={[1.57, -0.01, -1.49]}
+      scale={0.03}
+    />
+  </group>
   )
 }

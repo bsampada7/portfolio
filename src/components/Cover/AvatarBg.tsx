@@ -62,9 +62,10 @@ export default function AvatarBg() {
       occlude='blending'
       wrapperClass={"pointer-none-children-strict"}
     >
-      <div className="bg-circle bg-gradient-to-t to-secondary from-primary pointer-events-none rounded-half max-w-xs 
+      {!(scrollPosition2 >= 1) &&
+        <div className="bg-circle bg-gradient-to-t to-secondary from-primary pointer-events-none rounded-half max-w-xs 
                       w-40 h-40 sm:w-48 sm:h-48 lg:w-60 lg:h-60 xl:w-72 xl:h-72" style={{ opacity: opacity }}>
-      </div>
+        </div>}
     </Html>
   )
 }
