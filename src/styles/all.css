@@ -334,10 +334,10 @@
   background: transparent;
 }
 
-#contact-contents {
+#tweet {
   display: none;
 }
-#Contact > #contact-contents {
+#socials-wrapper #tweet {
   display: block;
 }
 

@@ -1,5 +1,6 @@
 import Background from '@/components/Background'
 import Contact from '@/components/Contact'
+import Tweet from '@/components/Contact/Tweet'
 import MenuContainer from '@/components/MenuContainer'
 import Overlay from '@/components/Overlay'
 import ThreeCanvas from '@/components/ThreeCanvas'
@@ -24,7 +25,7 @@ export default function Home() {
           <ThreeCanvas />
           <MenuContainer />
           <Overlay />
-          <Contact />
+          <Tweet/>
         </div>
 
       </main>

@@ -3,6 +3,7 @@ import { numberofPages } from "@/utils/hooks/useScrollData";
 import { Scroll, ScrollControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { useContext } from "react";
+import Contact from "../Contact";
 import { Cover } from "../Cover";
 import Avatar from "../Cover/Avatar";
 import AvatarBg from "../Cover/AvatarBg";
@@ -42,6 +43,7 @@ const ThreeCanvas = () => {
             </section>
             <section id='Contact' className="absolute w-[100vw] top-[500vh] contact h-[100vh] flex items-center justify-center bg-background">
               {/* <Contact /> // will be rendered inside this div using javascript*/}
+              <Contact />
             </section>
           </Scroll>
         </ScrollControls>
