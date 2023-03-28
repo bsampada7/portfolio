@@ -17,7 +17,7 @@ const MenuContainer = () => {
 
   useEffect(() => {
     if (menuOpen) {
-      setactiveLink(Math.trunc(window.scrolldrei.el.scrollTop * numberofPages / window.scrolldrei.el.scrollHeight))
+      setactiveLink(Math.min(Math.trunc(1.1 * window.scrolldrei.el.scrollTop * numberofPages / window.scrolldrei.el.scrollHeight), numberofPages - 1))
     }
   }, [menuOpen]);
 
